@@ -757,6 +757,33 @@ paths:
           description: user with the specified ID was not found.
         default:
           description: Unexpected error
+    patch:
+      operationId: editItemCountByUserIdAndProductId
+      security:
+        - accessCode: [admin ,client]
+      tags:
+        - User
+        - Cart
+      summary: edit cart item
+      responses:
+        '201':
+          description: delete cart_items for current user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    format: int64
+
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+
   /users/{user_id}/pending_items:
     parameters:
       - name: user_id
