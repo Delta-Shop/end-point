@@ -24,6 +24,7 @@ Class | Method | HTTP request | Description
 *CartApi* | [**checkoutCart**](Apis/CartApi.md#checkoutcart) | **POST** /users/{user_id}/checkout | checkout user cart
 *CartApi* | [**deleteCartItemByUserIdAndProductId**](Apis/CartApi.md#deletecartitembyuseridandproductid) | **DELETE** /users/{user_id}/cart/item/{product_id} | remove item from cart
 *CartApi* | [**deletePendingItemsByUserId**](Apis/CartApi.md#deletependingitemsbyuserid) | **DELETE** /users/{user_id}/pending_items/{cart_id} | remove item from pending as mean to cancel order
+*CartApi* | [**editItemCountByUserIdAndProductId**](Apis/CartApi.md#edititemcountbyuseridandproductid) | **PATCH** /users/{user_id}/cart/item/{product_id} | edit cart item
 *CartApi* | [**listCartByUserId**](Apis/CartApi.md#listcartbyuserid) | **GET** /users/{user_id}/cart | Returns cart by User ID.
 *CartApi* | [**listPendingItemsByUserId**](Apis/CartApi.md#listpendingitemsbyuserid) | **GET** /users/{user_id}/pending_items | list pending items for user
 *CatagoriesApi* | [**addCatagories**](Apis/CatagoriesApi.md#addcatagories) | **POST** /catagories | Creates a new catagort.
@@ -54,6 +55,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**deleteCartItemByUserIdAndProductId**](Apis/UserApi.md#deletecartitembyuseridandproductid) | **DELETE** /users/{user_id}/cart/item/{product_id} | remove item from cart
 *UserApi* | [**deleteSavedItemsByUserIdAndProductId**](Apis/UserApi.md#deletesaveditemsbyuseridandproductid) | **DELETE** /users/{user_id}/saved_items/{product_id} | remove item from SavedItems
 *UserApi* | [**deleteUserById**](Apis/UserApi.md#deleteuserbyid) | **DELETE** /users/{user_id} | delet user account by id
+*UserApi* | [**editItemCountByUserIdAndProductId**](Apis/UserApi.md#edititemcountbyuseridandproductid) | **PATCH** /users/{user_id}/cart/item/{product_id} | edit cart item
 *UserApi* | [**getUserById**](Apis/UserApi.md#getuserbyid) | **GET** /users/{user_id} | Returns a User by ID.
 *UserApi* | [**listAddressByUserId**](Apis/UserApi.md#listaddressbyuserid) | **GET** /users/{user_id}/address | Returns addresses by User ID.
 *UserApi* | [**listCartByUserId**](Apis/UserApi.md#listcartbyuserid) | **GET** /users/{user_id}/cart | Returns cart by User ID.
@@ -76,6 +78,7 @@ Class | Method | HTTP request | Description
  - [InlineResponse2002](./\Models/InlineResponse2002.md)
  - [InlineResponse2003](./\Models/InlineResponse2003.md)
  - [InlineResponse201](./\Models/InlineResponse201.md)
+ - [InlineResponse2011](./\Models/InlineResponse2011.md)
  - [Paging](./\Models/Paging.md)
  - [Product](./\Models/Product.md)
  - [ProductAnalysis](./\Models/ProductAnalysis.md)

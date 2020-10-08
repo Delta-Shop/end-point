@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**deleteCartItemByUserIdAndProductId**](UserApi.md#deleteCartItemByUserIdAndProductId) | **DELETE** /users/{user_id}/cart/item/{product_id} | remove item from cart
 [**deleteSavedItemsByUserIdAndProductId**](UserApi.md#deleteSavedItemsByUserIdAndProductId) | **DELETE** /users/{user_id}/saved_items/{product_id} | remove item from SavedItems
 [**deleteUserById**](UserApi.md#deleteUserById) | **DELETE** /users/{user_id} | delet user account by id
+[**editItemCountByUserIdAndProductId**](UserApi.md#editItemCountByUserIdAndProductId) | **PATCH** /users/{user_id}/cart/item/{product_id} | edit cart item
 [**getUserById**](UserApi.md#getUserById) | **GET** /users/{user_id} | Returns a User by ID.
 [**listAddressByUserId**](UserApi.md#listAddressByUserId) | **GET** /users/{user_id}/address | Returns addresses by User ID.
 [**listCartByUserId**](UserApi.md#listCartByUserId) | **GET** /users/{user_id}/cart | Returns cart by User ID.
@@ -155,7 +156,7 @@ Name | Type | Description  | Notes
 
 <a name="checkoutCart"></a>
 # **checkoutCart**
-> inline_response_201 checkoutCart(userId)
+> inline_response_201_1 checkoutCart(userId)
 
 checkout user cart
 
@@ -167,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**inline_response_201**](../\Models/inline_response_201.md)
+[**inline_response_201_1**](../\Models/inline_response_201_1.md)
 
 ### Authorization
 
@@ -280,6 +281,32 @@ null (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+<a name="editItemCountByUserIdAndProductId"></a>
+# **editItemCountByUserIdAndProductId**
+> inline_response_201 editItemCountByUserIdAndProductId(userId, productId)
+
+edit cart item
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **Integer**|  | [default to null]
+ **productId** | **Integer**|  | [default to null]
+
+### Return type
+
+[**inline_response_201**](../\Models/inline_response_201.md)
+
+### Authorization
+
+[accessCode](../README.md#accessCode)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 <a name="getUserById"></a>
 # **getUserById**

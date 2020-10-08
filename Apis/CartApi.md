@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**checkoutCart**](CartApi.md#checkoutCart) | **POST** /users/{user_id}/checkout | checkout user cart
 [**deleteCartItemByUserIdAndProductId**](CartApi.md#deleteCartItemByUserIdAndProductId) | **DELETE** /users/{user_id}/cart/item/{product_id} | remove item from cart
 [**deletePendingItemsByUserId**](CartApi.md#deletePendingItemsByUserId) | **DELETE** /users/{user_id}/pending_items/{cart_id} | remove item from pending as mean to cancel order
+[**editItemCountByUserIdAndProductId**](CartApi.md#editItemCountByUserIdAndProductId) | **PATCH** /users/{user_id}/cart/item/{product_id} | edit cart item
 [**listCartByUserId**](CartApi.md#listCartByUserId) | **GET** /users/{user_id}/cart | Returns cart by User ID.
 [**listPendingItemsByUserId**](CartApi.md#listPendingItemsByUserId) | **GET** /users/{user_id}/pending_items | list pending items for user
 
@@ -67,7 +68,7 @@ Name | Type | Description  | Notes
 
 <a name="checkoutCart"></a>
 # **checkoutCart**
-> inline_response_201 checkoutCart(userId)
+> inline_response_201_1 checkoutCart(userId)
 
 checkout user cart
 
@@ -79,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**inline_response_201**](../\Models/inline_response_201.md)
+[**inline_response_201_1**](../\Models/inline_response_201_1.md)
 
 ### Authorization
 
@@ -141,6 +142,32 @@ null (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+<a name="editItemCountByUserIdAndProductId"></a>
+# **editItemCountByUserIdAndProductId**
+> inline_response_201 editItemCountByUserIdAndProductId(userId, productId)
+
+edit cart item
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **Integer**|  | [default to null]
+ **productId** | **Integer**|  | [default to null]
+
+### Return type
+
+[**inline_response_201**](../\Models/inline_response_201.md)
+
+### Authorization
+
+[accessCode](../README.md#accessCode)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 <a name="listCartByUserId"></a>
 # **listCartByUserId**

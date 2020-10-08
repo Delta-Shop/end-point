@@ -1008,6 +1008,14 @@ ul.nav-tabs {
 };
     defs["inline_response_201"] = {
   "properties" : {
+    "count" : {
+      "type" : "integer",
+      "format" : "int64"
+    }
+  }
+};
+    defs["inline_response_201_1"] = {
+  "properties" : {
     "cart" : {
       "$ref" : "#/components/schemas/Cart"
     },
@@ -1248,6 +1256,9 @@ ul.nav-tabs {
                     <li data-group="Cart" data-name="deletePendingItemsByUserId" class="">
                       <a href="#api-Cart-deletePendingItemsByUserId">deletePendingItemsByUserId</a>
                     </li>
+                    <li data-group="Cart" data-name="editItemCountByUserIdAndProductId" class="">
+                      <a href="#api-Cart-editItemCountByUserIdAndProductId">editItemCountByUserIdAndProductId</a>
+                    </li>
                     <li data-group="Cart" data-name="listCartByUserId" class="">
                       <a href="#api-Cart-listCartByUserId">listCartByUserId</a>
                     </li>
@@ -1342,6 +1353,9 @@ ul.nav-tabs {
                     </li>
                     <li data-group="User" data-name="deleteUserById" class="">
                       <a href="#api-User-deleteUserById">deleteUserById</a>
+                    </li>
+                    <li data-group="User" data-name="editItemCountByUserIdAndProductId" class="">
+                      <a href="#api-User-editItemCountByUserIdAndProductId">editItemCountByUserIdAndProductId</a>
                     </li>
                     <li data-group="User" data-name="getUserById" class="">
                       <a href="#api-User-getUserById">getUserById</a>
@@ -7553,7 +7567,7 @@ public class CartApiExample {
         CartApi apiInstance = new CartApi();
         Integer userId = 56; // Integer | 
         try {
-            inline_response_201 result = apiInstance.checkoutCart(userId);
+            inline_response_201_1 result = apiInstance.checkoutCart(userId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CartApi#checkoutCart");
@@ -7573,7 +7587,7 @@ public class CartApiExample {
         CartApi apiInstance = new CartApi();
         Integer userId = 56; // Integer | 
         try {
-            inline_response_201 result = apiInstance.checkoutCart(userId);
+            inline_response_201_1 result = apiInstance.checkoutCart(userId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CartApi#checkoutCart");
@@ -7598,7 +7612,7 @@ CartApi *apiInstance = [[CartApi alloc] init];
 
 // checkout user cart
 [apiInstance checkoutCartWith:userId
-              completionHandler: ^(inline_response_201 output, NSError* error) {
+              completionHandler: ^(inline_response_201_1 output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -7657,7 +7671,7 @@ namespace Example
             try
             {
                 // checkout user cart
-                inline_response_201 result = apiInstance.checkoutCart(userId);
+                inline_response_201_1 result = apiInstance.checkoutCart(userId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7831,7 +7845,7 @@ pub fn main() {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/inline_response_201"
+        "$ref" : "#/components/schemas/inline_response_201_1"
       }
     }
   }
@@ -8665,6 +8679,470 @@ pub fn main() {
 
 
                             <div class="tab-content" id="responses-Cart-deletePendingItemsByUserId-204-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Cart-editItemCountByUserIdAndProductId">
+                      <article id="api-Cart-editItemCountByUserIdAndProductId-0" data-group="User" data-name="editItemCountByUserIdAndProductId" data-version="0">
+                        <div class="pull-left">
+                          <h1>editItemCountByUserIdAndProductId</h1>
+                          <p>edit cart item</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="patch"><code><span class="pln">/users/{user_id}/cart/item/{product_id}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Cart-editItemCountByUserIdAndProductId-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Cart-editItemCountByUserIdAndProductId-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH "https://delta-shop.github.io/end-point/users/{user_id}/cart/item/{product_id}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.CartApi;
+
+import java.io.File;
+import java.util.*;
+
+public class CartApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: accessCode
+        OAuth accessCode = (OAuth) defaultClient.getAuthentication("accessCode");
+        accessCode.setAccessToken("YOUR ACCESS TOKEN");
+
+        CartApi apiInstance = new CartApi();
+        Integer userId = 56; // Integer | 
+        Integer productId = 56; // Integer | 
+        try {
+            inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CartApi#editItemCountByUserIdAndProductId");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.CartApi;
+
+public class CartApiExample {
+
+    public static void main(String[] args) {
+        CartApi apiInstance = new CartApi();
+        Integer userId = 56; // Integer | 
+        Integer productId = 56; // Integer | 
+        try {
+            inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CartApi#editItemCountByUserIdAndProductId");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: accessCode)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Integer *userId = 56; //  (default to null)
+Integer *productId = 56; //  (default to null)
+
+CartApi *apiInstance = [[CartApi alloc] init];
+
+// edit cart item
+[apiInstance editItemCountByUserIdAndProductIdWith:userId
+    productId:productId
+              completionHandler: ^(inline_response_201 output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var DelatShop = require('delat_shop');
+var defaultClient = DelatShop.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: accessCode
+var accessCode = defaultClient.authentications['accessCode'];
+accessCode.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new DelatShop.CartApi()
+var userId = 56; // {Integer} 
+var productId = 56; // {Integer} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.editItemCountByUserIdAndProductId(userId, productId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class editItemCountByUserIdAndProductIdExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: accessCode
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CartApi();
+            var userId = 56;  // Integer |  (default to null)
+            var productId = 56;  // Integer |  (default to null)
+
+            try
+            {
+                // edit cart item
+                inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling CartApi.editItemCountByUserIdAndProductId: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: accessCode
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new OpenAPITools\Client\Api\CartApi();
+$userId = 56; // Integer | 
+$productId = 56; // Integer | 
+
+try {
+    $result = $api_instance->editItemCountByUserIdAndProductId($userId, $productId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CartApi->editItemCountByUserIdAndProductId: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::CartApi;
+
+# Configure OAuth2 access token for authorization: accessCode
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::OPenAPIClient::CartApi->new();
+my $userId = 56; # Integer | 
+my $productId = 56; # Integer | 
+
+eval { 
+    my $result = $api_instance->editItemCountByUserIdAndProductId(userId => $userId, productId => $productId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling CartApi->editItemCountByUserIdAndProductId: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: accessCode
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = openapi_client.CartApi()
+userId = 56 # Integer |  (default to null)
+productId = 56 # Integer |  (default to null)
+
+try: 
+    # edit cart item
+    api_response = api_instance.edit_item_count_by_user_id_and_product_id(userId, productId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling CartApi->editItemCountByUserIdAndProductId: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Cart-editItemCountByUserIdAndProductId-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate CartApi;
+
+pub fn main() {
+    let userId = 56; // Integer
+    let productId = 56; // Integer
+
+    let mut context = CartApi::Context::default();
+    let result = client.editItemCountByUserIdAndProductId(userId, productId, &context).wait();
+    println!("{:?}", result);
+
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                              <tr>
+                                <td>admin</td>
+                                <td>can read/write admin resources</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>client</td>
+                                <td>allows modifying resources clients</td>
+                              </tr>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">user_id*</td>
+<td>
+
+
+    <div id="d2e199_editItemCountByUserIdAndProductId_userId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">product_id*</td>
+<td>
+
+
+    <div id="d2e199_editItemCountByUserIdAndProductId_productId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Cart-editItemCountByUserIdAndProductId-title-201"></h3>
+                            <p id="examples-Cart-editItemCountByUserIdAndProductId-description-201" class="marked"></p>
+                            <script>
+                              var responseCart201_description = `delete cart_items for current user`;
+                              var responseCart201_description_break = responseCart201_description.indexOf('\n');
+                              if (responseCart201_description_break == -1) {
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-title-201").text("Status: 201 - " + responseCart201_description);
+                              } else {
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-title-201").text("Status: 201 - " + responseCart201_description.substring(0, responseCart201_description_break));
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-description-201").html(responseCart201_description.substring(responseCart201_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Cart-editItemCountByUserIdAndProductId-201" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Cart-editItemCountByUserIdAndProductId-201-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Cart-editItemCountByUserIdAndProductId-201-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Cart-editItemCountByUserIdAndProductId-201-schema">
+                                  <div id="responses-Cart-editItemCountByUserIdAndProductId-schema-201" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "delete cart_items for current user",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/inline_response_201"
+      }
+    }
+  }
+};
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                            schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-Cart-editItemCountByUserIdAndProductId-201-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Cart-editItemCountByUserIdAndProductId-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-Cart-editItemCountByUserIdAndProductId-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-Cart-editItemCountByUserIdAndProductId-title-400"></h3>
+                            <p id="examples-Cart-editItemCountByUserIdAndProductId-description-400" class="marked"></p>
+                            <script>
+                              var responseCart400_description = `The specified user_id is invalid (not a number).`;
+                              var responseCart400_description_break = responseCart400_description.indexOf('\n');
+                              if (responseCart400_description_break == -1) {
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-title-400").text("Status: 400 - " + responseCart400_description);
+                              } else {
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-title-400").text("Status: 400 - " + responseCart400_description.substring(0, responseCart400_description_break));
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-description-400").html(responseCart400_description.substring(responseCart400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Cart-editItemCountByUserIdAndProductId-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Cart-editItemCountByUserIdAndProductId-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-Cart-editItemCountByUserIdAndProductId-title-404"></h3>
+                            <p id="examples-Cart-editItemCountByUserIdAndProductId-description-404" class="marked"></p>
+                            <script>
+                              var responseCart404_description = `user with the specified ID was not found.`;
+                              var responseCart404_description_break = responseCart404_description.indexOf('\n');
+                              if (responseCart404_description_break == -1) {
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-title-404").text("Status: 404 - " + responseCart404_description);
+                              } else {
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-title-404").text("Status: 404 - " + responseCart404_description.substring(0, responseCart404_description_break));
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-description-404").html(responseCart404_description.substring(responseCart404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Cart-editItemCountByUserIdAndProductId-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Cart-editItemCountByUserIdAndProductId-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-Cart-editItemCountByUserIdAndProductId-title-default"></h3>
+                            <p id="examples-Cart-editItemCountByUserIdAndProductId-description-default" class="marked"></p>
+                            <script>
+                              var responseCartdefault_description = `Unexpected error`;
+                              var responseCartdefault_description_break = responseCartdefault_description.indexOf('\n');
+                              if (responseCartdefault_description_break == -1) {
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-title-default").text("Status: default - " + responseCartdefault_description);
+                              } else {
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-title-default").text("Status: default - " + responseCartdefault_description.substring(0, responseCartdefault_description_break));
+                                $("#examples-Cart-editItemCountByUserIdAndProductId-description-default").html(responseCartdefault_description.substring(responseCartdefault_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Cart-editItemCountByUserIdAndProductId-default" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Cart-editItemCountByUserIdAndProductId-default-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -19546,7 +20024,7 @@ public class UserApiExample {
         UserApi apiInstance = new UserApi();
         Integer userId = 56; // Integer | 
         try {
-            inline_response_201 result = apiInstance.checkoutCart(userId);
+            inline_response_201_1 result = apiInstance.checkoutCart(userId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserApi#checkoutCart");
@@ -19566,7 +20044,7 @@ public class UserApiExample {
         UserApi apiInstance = new UserApi();
         Integer userId = 56; // Integer | 
         try {
-            inline_response_201 result = apiInstance.checkoutCart(userId);
+            inline_response_201_1 result = apiInstance.checkoutCart(userId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserApi#checkoutCart");
@@ -19591,7 +20069,7 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
 // checkout user cart
 [apiInstance checkoutCartWith:userId
-              completionHandler: ^(inline_response_201 output, NSError* error) {
+              completionHandler: ^(inline_response_201_1 output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -19650,7 +20128,7 @@ namespace Example
             try
             {
                 // checkout user cart
-                inline_response_201 result = apiInstance.checkoutCart(userId);
+                inline_response_201_1 result = apiInstance.checkoutCart(userId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -19824,7 +20302,7 @@ pub fn main() {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/inline_response_201"
+        "$ref" : "#/components/schemas/inline_response_201_1"
       }
     }
   }
@@ -21574,6 +22052,470 @@ pub fn main() {
 
 
                             <div class="tab-content" id="responses-User-deleteUserById-default-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-User-editItemCountByUserIdAndProductId">
+                      <article id="api-User-editItemCountByUserIdAndProductId-0" data-group="User" data-name="editItemCountByUserIdAndProductId" data-version="0">
+                        <div class="pull-left">
+                          <h1>editItemCountByUserIdAndProductId</h1>
+                          <p>edit cart item</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="patch"><code><span class="pln">/users/{user_id}/cart/item/{product_id}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-User-editItemCountByUserIdAndProductId-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-java">Java</a></li>
+                          <li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-python">Python</a></li>
+                          <li class=""><a href="#examples-User-editItemCountByUserIdAndProductId-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-User-editItemCountByUserIdAndProductId-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PATCH "https://delta-shop.github.io/end-point/users/{user_id}/cart/item/{product_id}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.UserApi;
+
+import java.io.File;
+import java.util.*;
+
+public class UserApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: accessCode
+        OAuth accessCode = (OAuth) defaultClient.getAuthentication("accessCode");
+        accessCode.setAccessToken("YOUR ACCESS TOKEN");
+
+        UserApi apiInstance = new UserApi();
+        Integer userId = 56; // Integer | 
+        Integer productId = 56; // Integer | 
+        try {
+            inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserApi#editItemCountByUserIdAndProductId");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.UserApi;
+
+public class UserApiExample {
+
+    public static void main(String[] args) {
+        UserApi apiInstance = new UserApi();
+        Integer userId = 56; // Integer | 
+        Integer productId = 56; // Integer | 
+        try {
+            inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserApi#editItemCountByUserIdAndProductId");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: accessCode)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+Integer *userId = 56; //  (default to null)
+Integer *productId = 56; //  (default to null)
+
+UserApi *apiInstance = [[UserApi alloc] init];
+
+// edit cart item
+[apiInstance editItemCountByUserIdAndProductIdWith:userId
+    productId:productId
+              completionHandler: ^(inline_response_201 output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var DelatShop = require('delat_shop');
+var defaultClient = DelatShop.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: accessCode
+var accessCode = defaultClient.authentications['accessCode'];
+accessCode.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new DelatShop.UserApi()
+var userId = 56; // {Integer} 
+var productId = 56; // {Integer} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.editItemCountByUserIdAndProductId(userId, productId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class editItemCountByUserIdAndProductIdExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: accessCode
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new UserApi();
+            var userId = 56;  // Integer |  (default to null)
+            var productId = 56;  // Integer |  (default to null)
+
+            try
+            {
+                // edit cart item
+                inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling UserApi.editItemCountByUserIdAndProductId: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: accessCode
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new OpenAPITools\Client\Api\UserApi();
+$userId = 56; // Integer | 
+$productId = 56; // Integer | 
+
+try {
+    $result = $api_instance->editItemCountByUserIdAndProductId($userId, $productId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserApi->editItemCountByUserIdAndProductId: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::UserApi;
+
+# Configure OAuth2 access token for authorization: accessCode
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::OPenAPIClient::UserApi->new();
+my $userId = 56; # Integer | 
+my $productId = 56; # Integer | 
+
+eval { 
+    my $result = $api_instance->editItemCountByUserIdAndProductId(userId => $userId, productId => $productId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling UserApi->editItemCountByUserIdAndProductId: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: accessCode
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = openapi_client.UserApi()
+userId = 56 # Integer |  (default to null)
+productId = 56 # Integer |  (default to null)
+
+try: 
+    # edit cart item
+    api_response = api_instance.edit_item_count_by_user_id_and_product_id(userId, productId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UserApi->editItemCountByUserIdAndProductId: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-editItemCountByUserIdAndProductId-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate UserApi;
+
+pub fn main() {
+    let userId = 56; // Integer
+    let productId = 56; // Integer
+
+    let mut context = UserApi::Context::default();
+    let result = client.editItemCountByUserIdAndProductId(userId, productId, &context).wait();
+    println!("{:?}", result);
+
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                              <tr>
+                                <td>admin</td>
+                                <td>can read/write admin resources</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>client</td>
+                                <td>allows modifying resources clients</td>
+                              </tr>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">user_id*</td>
+<td>
+
+
+    <div id="d2e199_editItemCountByUserIdAndProductId_userId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">product_id*</td>
+<td>
+
+
+    <div id="d2e199_editItemCountByUserIdAndProductId_productId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-User-editItemCountByUserIdAndProductId-title-201"></h3>
+                            <p id="examples-User-editItemCountByUserIdAndProductId-description-201" class="marked"></p>
+                            <script>
+                              var responseUser201_description = `delete cart_items for current user`;
+                              var responseUser201_description_break = responseUser201_description.indexOf('\n');
+                              if (responseUser201_description_break == -1) {
+                                $("#examples-User-editItemCountByUserIdAndProductId-title-201").text("Status: 201 - " + responseUser201_description);
+                              } else {
+                                $("#examples-User-editItemCountByUserIdAndProductId-title-201").text("Status: 201 - " + responseUser201_description.substring(0, responseUser201_description_break));
+                                $("#examples-User-editItemCountByUserIdAndProductId-description-201").html(responseUser201_description.substring(responseUser201_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-User-editItemCountByUserIdAndProductId-201" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-User-editItemCountByUserIdAndProductId-201-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-User-editItemCountByUserIdAndProductId-201-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-User-editItemCountByUserIdAndProductId-201-schema">
+                                  <div id="responses-User-editItemCountByUserIdAndProductId-schema-201" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "delete cart_items for current user",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/inline_response_201"
+      }
+    }
+  }
+};
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                            schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-User-editItemCountByUserIdAndProductId-201-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-User-editItemCountByUserIdAndProductId-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-User-editItemCountByUserIdAndProductId-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-User-editItemCountByUserIdAndProductId-title-400"></h3>
+                            <p id="examples-User-editItemCountByUserIdAndProductId-description-400" class="marked"></p>
+                            <script>
+                              var responseUser400_description = `The specified user_id is invalid (not a number).`;
+                              var responseUser400_description_break = responseUser400_description.indexOf('\n');
+                              if (responseUser400_description_break == -1) {
+                                $("#examples-User-editItemCountByUserIdAndProductId-title-400").text("Status: 400 - " + responseUser400_description);
+                              } else {
+                                $("#examples-User-editItemCountByUserIdAndProductId-title-400").text("Status: 400 - " + responseUser400_description.substring(0, responseUser400_description_break));
+                                $("#examples-User-editItemCountByUserIdAndProductId-description-400").html(responseUser400_description.substring(responseUser400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-User-editItemCountByUserIdAndProductId-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-User-editItemCountByUserIdAndProductId-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-User-editItemCountByUserIdAndProductId-title-404"></h3>
+                            <p id="examples-User-editItemCountByUserIdAndProductId-description-404" class="marked"></p>
+                            <script>
+                              var responseUser404_description = `user with the specified ID was not found.`;
+                              var responseUser404_description_break = responseUser404_description.indexOf('\n');
+                              if (responseUser404_description_break == -1) {
+                                $("#examples-User-editItemCountByUserIdAndProductId-title-404").text("Status: 404 - " + responseUser404_description);
+                              } else {
+                                $("#examples-User-editItemCountByUserIdAndProductId-title-404").text("Status: 404 - " + responseUser404_description.substring(0, responseUser404_description_break));
+                                $("#examples-User-editItemCountByUserIdAndProductId-description-404").html(responseUser404_description.substring(responseUser404_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-User-editItemCountByUserIdAndProductId-404" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-User-editItemCountByUserIdAndProductId-404-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-User-editItemCountByUserIdAndProductId-title-default"></h3>
+                            <p id="examples-User-editItemCountByUserIdAndProductId-description-default" class="marked"></p>
+                            <script>
+                              var responseUserdefault_description = `Unexpected error`;
+                              var responseUserdefault_description_break = responseUserdefault_description.indexOf('\n');
+                              if (responseUserdefault_description_break == -1) {
+                                $("#examples-User-editItemCountByUserIdAndProductId-title-default").text("Status: default - " + responseUserdefault_description);
+                              } else {
+                                $("#examples-User-editItemCountByUserIdAndProductId-title-default").text("Status: default - " + responseUserdefault_description.substring(0, responseUserdefault_description_break));
+                                $("#examples-User-editItemCountByUserIdAndProductId-description-default").html(responseUserdefault_description.substring(responseUserdefault_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-User-editItemCountByUserIdAndProductId-default" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-User-editItemCountByUserIdAndProductId-default-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
