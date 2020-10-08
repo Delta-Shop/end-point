@@ -765,17 +765,22 @@ paths:
         - User
         - Cart
       summary: edit cart item
-      responses:
-        '201':
-          description: delete cart_items for current user
-          content:
+      requestBody:
+        content:
             application/json:
               schema:
-                type: object
-                properties:
-                  count:
-                    type: integer
-                    format: int64
+                allOf:
+                    - $ref: '#/components/schemas/Cart_item'
+                    - properties:
+                        product:
+                          readOnly: true
+      responses:
+        '201':
+          description: count updated
+          content:
+            application/json:  
+              schema:
+                $ref: '#/components/schemas/Cart_item'
 
         "400":
           description: The specified user_id is invalid (not a number).
@@ -1158,6 +1163,7 @@ components:
           type: integer
         product_href:
           type: string
+          readOnly: true
     
     arrayOfProducts:
       description: products data in array
