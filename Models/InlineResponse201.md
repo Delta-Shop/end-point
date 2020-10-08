@@ -3,7 +3,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**count** | [**Long**](long.md) |  | [optional] [default to null]
+**cart** | [**Cart**](Cart.md) |  | [optional] [default to null]
+**transactionsUnderscoreinfo** | [**String**](string.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

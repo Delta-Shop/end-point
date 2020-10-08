@@ -898,7 +898,8 @@ ul.nav-tabs {
       "type" : "integer"
     },
     "product_href" : {
-      "type" : "string"
+      "type" : "string",
+      "readOnly" : true
     }
   },
   "description" : "product with count of it as cart item"
@@ -1008,14 +1009,6 @@ ul.nav-tabs {
 };
     defs["inline_response_201"] = {
   "properties" : {
-    "count" : {
-      "type" : "integer",
-      "format" : "int64"
-    }
-  }
-};
-    defs["inline_response_201_1"] = {
-  "properties" : {
     "cart" : {
       "$ref" : "#/components/schemas/Cart"
     },
@@ -1050,7 +1043,8 @@ ul.nav-tabs {
   "type" : "object",
   "properties" : {
     "id" : {
-      "type" : "integer"
+      "type" : "integer",
+      "readOnly" : true
     },
     "name" : {
       "type" : "string",
@@ -7567,7 +7561,7 @@ public class CartApiExample {
         CartApi apiInstance = new CartApi();
         Integer userId = 56; // Integer | 
         try {
-            inline_response_201_1 result = apiInstance.checkoutCart(userId);
+            inline_response_201 result = apiInstance.checkoutCart(userId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CartApi#checkoutCart");
@@ -7587,7 +7581,7 @@ public class CartApiExample {
         CartApi apiInstance = new CartApi();
         Integer userId = 56; // Integer | 
         try {
-            inline_response_201_1 result = apiInstance.checkoutCart(userId);
+            inline_response_201 result = apiInstance.checkoutCart(userId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CartApi#checkoutCart");
@@ -7612,7 +7606,7 @@ CartApi *apiInstance = [[CartApi alloc] init];
 
 // checkout user cart
 [apiInstance checkoutCartWith:userId
-              completionHandler: ^(inline_response_201_1 output, NSError* error) {
+              completionHandler: ^(inline_response_201 output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -7671,7 +7665,7 @@ namespace Example
             try
             {
                 // checkout user cart
-                inline_response_201_1 result = apiInstance.checkoutCart(userId);
+                inline_response_201 result = apiInstance.checkoutCart(userId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7845,7 +7839,7 @@ pub fn main() {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/inline_response_201_1"
+        "$ref" : "#/components/schemas/inline_response_201"
       }
     }
   }
@@ -8739,8 +8733,9 @@ public class CartApiExample {
         CartApi apiInstance = new CartApi();
         Integer userId = 56; // Integer | 
         Integer productId = 56; // Integer | 
+        UNKNOWN_BASE_TYPE uNKNOWNBASETYPE = ; // UNKNOWN_BASE_TYPE | 
         try {
-            inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+            Cart_item result = apiInstance.editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CartApi#editItemCountByUserIdAndProductId");
@@ -8760,8 +8755,9 @@ public class CartApiExample {
         CartApi apiInstance = new CartApi();
         Integer userId = 56; // Integer | 
         Integer productId = 56; // Integer | 
+        UNKNOWN_BASE_TYPE uNKNOWNBASETYPE = ; // UNKNOWN_BASE_TYPE | 
         try {
-            inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+            Cart_item result = apiInstance.editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CartApi#editItemCountByUserIdAndProductId");
@@ -8782,13 +8778,15 @@ public class CartApiExample {
 
 Integer *userId = 56; //  (default to null)
 Integer *productId = 56; //  (default to null)
+UNKNOWN_BASE_TYPE *uNKNOWNBASETYPE = ; //  (optional)
 
 CartApi *apiInstance = [[CartApi alloc] init];
 
 // edit cart item
 [apiInstance editItemCountByUserIdAndProductIdWith:userId
     productId:productId
-              completionHandler: ^(inline_response_201 output, NSError* error) {
+    uNKNOWNBASETYPE:uNKNOWNBASETYPE
+              completionHandler: ^(Cart_item output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -8810,6 +8808,9 @@ accessCode.accessToken = "YOUR ACCESS TOKEN"
 var api = new DelatShop.CartApi()
 var userId = 56; // {Integer} 
 var productId = 56; // {Integer} 
+var opts = {
+  'uNKNOWNBASETYPE':  // {UNKNOWN_BASE_TYPE} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -8818,7 +8819,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.editItemCountByUserIdAndProductId(userId, productId, callback);
+api.editItemCountByUserIdAndProductId(userId, productId, opts, callback);
 </code></pre>
                             </div>
 
@@ -8845,11 +8846,12 @@ namespace Example
             var apiInstance = new CartApi();
             var userId = 56;  // Integer |  (default to null)
             var productId = 56;  // Integer |  (default to null)
+            var uNKNOWNBASETYPE = new UNKNOWN_BASE_TYPE(); // UNKNOWN_BASE_TYPE |  (optional) 
 
             try
             {
                 // edit cart item
-                inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+                Cart_item result = apiInstance.editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8872,9 +8874,10 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YO
 $api_instance = new OpenAPITools\Client\Api\CartApi();
 $userId = 56; // Integer | 
 $productId = 56; // Integer | 
+$uNKNOWNBASETYPE = ; // UNKNOWN_BASE_TYPE | 
 
 try {
-    $result = $api_instance->editItemCountByUserIdAndProductId($userId, $productId);
+    $result = $api_instance->editItemCountByUserIdAndProductId($userId, $productId, $uNKNOWNBASETYPE);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CartApi->editItemCountByUserIdAndProductId: ', $e->getMessage(), PHP_EOL;
@@ -8893,9 +8896,10 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 my $api_instance = WWW::OPenAPIClient::CartApi->new();
 my $userId = 56; # Integer | 
 my $productId = 56; # Integer | 
+my $uNKNOWNBASETYPE = WWW::OPenAPIClient::Object::UNKNOWN_BASE_TYPE->new(); # UNKNOWN_BASE_TYPE | 
 
 eval { 
-    my $result = $api_instance->editItemCountByUserIdAndProductId(userId => $userId, productId => $productId);
+    my $result = $api_instance->editItemCountByUserIdAndProductId(userId => $userId, productId => $productId, uNKNOWNBASETYPE => $uNKNOWNBASETYPE);
     print Dumper($result);
 };
 if ($@) {
@@ -8917,10 +8921,11 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = openapi_client.CartApi()
 userId = 56 # Integer |  (default to null)
 productId = 56 # Integer |  (default to null)
+uNKNOWNBASETYPE =  # UNKNOWN_BASE_TYPE |  (optional)
 
 try: 
     # edit cart item
-    api_response = api_instance.edit_item_count_by_user_id_and_product_id(userId, productId)
+    api_response = api_instance.edit_item_count_by_user_id_and_product_id(userId, productId, uNKNOWNBASETYPE=uNKNOWNBASETYPE)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CartApi->editItemCountByUserIdAndProductId: %s\n" % e)</code></pre>
@@ -8932,9 +8937,10 @@ except ApiException as e:
 pub fn main() {
     let userId = 56; // Integer
     let productId = 56; // Integer
+    let uNKNOWNBASETYPE = ; // UNKNOWN_BASE_TYPE
 
     let mut context = CartApi::Context::default();
-    let result = client.editItemCountByUserIdAndProductId(userId, productId, &context).wait();
+    let result = client.editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE, &context).wait();
     println!("{:?}", result);
 
 }
@@ -9008,6 +9014,58 @@ pub fn main() {
                             </table>
 
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">uNKNOWNBASETYPE </td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Cart_item"
+        }, {
+          "properties" : {
+            "product" : {
+              "readOnly" : true
+            }
+          }
+        } ]
+      }
+    }
+  }
+};
+  var schema = findNode('schema', schemaWrapper).schema;
+  if (!schema) {
+      schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_editItemCountByUserIdAndProductId_uNKNOWNBASETYPE');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_editItemCountByUserIdAndProductId_uNKNOWNBASETYPE"></div>
+</td>
+</tr>
+
+                            </table>
 
 
 
@@ -9015,7 +9073,7 @@ pub fn main() {
                             <h3 id="examples-Cart-editItemCountByUserIdAndProductId-title-201"></h3>
                             <p id="examples-Cart-editItemCountByUserIdAndProductId-description-201" class="marked"></p>
                             <script>
-                              var responseCart201_description = `delete cart_items for current user`;
+                              var responseCart201_description = `count updated`;
                               var responseCart201_description_break = responseCart201_description.indexOf('\n');
                               if (responseCart201_description_break == -1) {
                                 $("#examples-Cart-editItemCountByUserIdAndProductId-title-201").text("Status: 201 - " + responseCart201_description);
@@ -9043,11 +9101,11 @@ pub fn main() {
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "delete cart_items for current user",
+  "description" : "count updated",
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/inline_response_201"
+        "$ref" : "#/components/schemas/Cart_item"
       }
     }
   }
@@ -20024,7 +20082,7 @@ public class UserApiExample {
         UserApi apiInstance = new UserApi();
         Integer userId = 56; // Integer | 
         try {
-            inline_response_201_1 result = apiInstance.checkoutCart(userId);
+            inline_response_201 result = apiInstance.checkoutCart(userId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserApi#checkoutCart");
@@ -20044,7 +20102,7 @@ public class UserApiExample {
         UserApi apiInstance = new UserApi();
         Integer userId = 56; // Integer | 
         try {
-            inline_response_201_1 result = apiInstance.checkoutCart(userId);
+            inline_response_201 result = apiInstance.checkoutCart(userId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserApi#checkoutCart");
@@ -20069,7 +20127,7 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
 // checkout user cart
 [apiInstance checkoutCartWith:userId
-              completionHandler: ^(inline_response_201_1 output, NSError* error) {
+              completionHandler: ^(inline_response_201 output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -20128,7 +20186,7 @@ namespace Example
             try
             {
                 // checkout user cart
-                inline_response_201_1 result = apiInstance.checkoutCart(userId);
+                inline_response_201 result = apiInstance.checkoutCart(userId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -20302,7 +20360,7 @@ pub fn main() {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/inline_response_201_1"
+        "$ref" : "#/components/schemas/inline_response_201"
       }
     }
   }
@@ -22112,8 +22170,9 @@ public class UserApiExample {
         UserApi apiInstance = new UserApi();
         Integer userId = 56; // Integer | 
         Integer productId = 56; // Integer | 
+        UNKNOWN_BASE_TYPE uNKNOWNBASETYPE = ; // UNKNOWN_BASE_TYPE | 
         try {
-            inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+            Cart_item result = apiInstance.editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserApi#editItemCountByUserIdAndProductId");
@@ -22133,8 +22192,9 @@ public class UserApiExample {
         UserApi apiInstance = new UserApi();
         Integer userId = 56; // Integer | 
         Integer productId = 56; // Integer | 
+        UNKNOWN_BASE_TYPE uNKNOWNBASETYPE = ; // UNKNOWN_BASE_TYPE | 
         try {
-            inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+            Cart_item result = apiInstance.editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UserApi#editItemCountByUserIdAndProductId");
@@ -22155,13 +22215,15 @@ public class UserApiExample {
 
 Integer *userId = 56; //  (default to null)
 Integer *productId = 56; //  (default to null)
+UNKNOWN_BASE_TYPE *uNKNOWNBASETYPE = ; //  (optional)
 
 UserApi *apiInstance = [[UserApi alloc] init];
 
 // edit cart item
 [apiInstance editItemCountByUserIdAndProductIdWith:userId
     productId:productId
-              completionHandler: ^(inline_response_201 output, NSError* error) {
+    uNKNOWNBASETYPE:uNKNOWNBASETYPE
+              completionHandler: ^(Cart_item output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -22183,6 +22245,9 @@ accessCode.accessToken = "YOUR ACCESS TOKEN"
 var api = new DelatShop.UserApi()
 var userId = 56; // {Integer} 
 var productId = 56; // {Integer} 
+var opts = {
+  'uNKNOWNBASETYPE':  // {UNKNOWN_BASE_TYPE} 
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -22191,7 +22256,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.editItemCountByUserIdAndProductId(userId, productId, callback);
+api.editItemCountByUserIdAndProductId(userId, productId, opts, callback);
 </code></pre>
                             </div>
 
@@ -22218,11 +22283,12 @@ namespace Example
             var apiInstance = new UserApi();
             var userId = 56;  // Integer |  (default to null)
             var productId = 56;  // Integer |  (default to null)
+            var uNKNOWNBASETYPE = new UNKNOWN_BASE_TYPE(); // UNKNOWN_BASE_TYPE |  (optional) 
 
             try
             {
                 // edit cart item
-                inline_response_201 result = apiInstance.editItemCountByUserIdAndProductId(userId, productId);
+                Cart_item result = apiInstance.editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -22245,9 +22311,10 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YO
 $api_instance = new OpenAPITools\Client\Api\UserApi();
 $userId = 56; // Integer | 
 $productId = 56; // Integer | 
+$uNKNOWNBASETYPE = ; // UNKNOWN_BASE_TYPE | 
 
 try {
-    $result = $api_instance->editItemCountByUserIdAndProductId($userId, $productId);
+    $result = $api_instance->editItemCountByUserIdAndProductId($userId, $productId, $uNKNOWNBASETYPE);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->editItemCountByUserIdAndProductId: ', $e->getMessage(), PHP_EOL;
@@ -22266,9 +22333,10 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 my $api_instance = WWW::OPenAPIClient::UserApi->new();
 my $userId = 56; # Integer | 
 my $productId = 56; # Integer | 
+my $uNKNOWNBASETYPE = WWW::OPenAPIClient::Object::UNKNOWN_BASE_TYPE->new(); # UNKNOWN_BASE_TYPE | 
 
 eval { 
-    my $result = $api_instance->editItemCountByUserIdAndProductId(userId => $userId, productId => $productId);
+    my $result = $api_instance->editItemCountByUserIdAndProductId(userId => $userId, productId => $productId, uNKNOWNBASETYPE => $uNKNOWNBASETYPE);
     print Dumper($result);
 };
 if ($@) {
@@ -22290,10 +22358,11 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = openapi_client.UserApi()
 userId = 56 # Integer |  (default to null)
 productId = 56 # Integer |  (default to null)
+uNKNOWNBASETYPE =  # UNKNOWN_BASE_TYPE |  (optional)
 
 try: 
     # edit cart item
-    api_response = api_instance.edit_item_count_by_user_id_and_product_id(userId, productId)
+    api_response = api_instance.edit_item_count_by_user_id_and_product_id(userId, productId, uNKNOWNBASETYPE=uNKNOWNBASETYPE)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling UserApi->editItemCountByUserIdAndProductId: %s\n" % e)</code></pre>
@@ -22305,9 +22374,10 @@ except ApiException as e:
 pub fn main() {
     let userId = 56; // Integer
     let productId = 56; // Integer
+    let uNKNOWNBASETYPE = ; // UNKNOWN_BASE_TYPE
 
     let mut context = UserApi::Context::default();
-    let result = client.editItemCountByUserIdAndProductId(userId, productId, &context).wait();
+    let result = client.editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE, &context).wait();
     println!("{:?}", result);
 
 }
@@ -22381,6 +22451,58 @@ pub fn main() {
                             </table>
 
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">uNKNOWNBASETYPE </td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/Cart_item"
+        }, {
+          "properties" : {
+            "product" : {
+              "readOnly" : true
+            }
+          }
+        } ]
+      }
+    }
+  }
+};
+  var schema = findNode('schema', schemaWrapper).schema;
+  if (!schema) {
+      schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_editItemCountByUserIdAndProductId_uNKNOWNBASETYPE');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_editItemCountByUserIdAndProductId_uNKNOWNBASETYPE"></div>
+</td>
+</tr>
+
+                            </table>
 
 
 
@@ -22388,7 +22510,7 @@ pub fn main() {
                             <h3 id="examples-User-editItemCountByUserIdAndProductId-title-201"></h3>
                             <p id="examples-User-editItemCountByUserIdAndProductId-description-201" class="marked"></p>
                             <script>
-                              var responseUser201_description = `delete cart_items for current user`;
+                              var responseUser201_description = `count updated`;
                               var responseUser201_description_break = responseUser201_description.indexOf('\n');
                               if (responseUser201_description_break == -1) {
                                 $("#examples-User-editItemCountByUserIdAndProductId-title-201").text("Status: 201 - " + responseUser201_description);
@@ -22416,11 +22538,11 @@ pub fn main() {
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "delete cart_items for current user",
+  "description" : "count updated",
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/inline_response_201"
+        "$ref" : "#/components/schemas/Cart_item"
       }
     }
   }

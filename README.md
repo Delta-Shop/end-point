@@ -78,7 +78,6 @@ Class | Method | HTTP request | Description
  - [InlineResponse2002](./\Models/InlineResponse2002.md)
  - [InlineResponse2003](./\Models/InlineResponse2003.md)
  - [InlineResponse201](./\Models/InlineResponse201.md)
- - [InlineResponse2011](./\Models/InlineResponse2011.md)
  - [Paging](./\Models/Paging.md)
  - [Product](./\Models/Product.md)
  - [ProductAnalysis](./\Models/ProductAnalysis.md)

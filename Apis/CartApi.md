@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 <a name="checkoutCart"></a>
 # **checkoutCart**
-> inline_response_201_1 checkoutCart(userId)
+> inline_response_201 checkoutCart(userId)
 
 checkout user cart
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**inline_response_201_1**](../\Models/inline_response_201_1.md)
+[**inline_response_201**](../\Models/inline_response_201.md)
 
 ### Authorization
 
@@ -145,7 +145,7 @@ null (empty response body)
 
 <a name="editItemCountByUserIdAndProductId"></a>
 # **editItemCountByUserIdAndProductId**
-> inline_response_201 editItemCountByUserIdAndProductId(userId, productId)
+> Cart_item editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE)
 
 edit cart item
 
@@ -155,10 +155,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Integer**|  | [default to null]
  **productId** | **Integer**|  | [default to null]
+ **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](../\Models/UNKNOWN_BASE_TYPE.md)|  | [optional]
 
 ### Return type
 
-[**inline_response_201**](../\Models/inline_response_201.md)
+[**Cart_item**](../\Models/Cart_item.md)
 
 ### Authorization
 
@@ -166,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 <a name="listCartByUserId"></a>
