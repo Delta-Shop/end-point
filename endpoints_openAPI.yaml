@@ -1,0 +1,1204 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/abdo1819/delta_shop/1.0.0
+info:
+  version: "4.0.0"
+  title: delat_shop
+  description: >-
+    This is an example of using OAuth2 Access Code Flow in a specification to
+    describe security to your API.
+
+security:
+  - accessCode: [readonly]
+
+paths:
+  /images:
+    get:
+      summary: return image by it's id
+      operationId: listImage
+      parameters:
+        - in: query
+          name : image_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            image/*:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: image not found
+          content:
+              image/*:
+                schema:
+                  description: fallback image
+                  type: string
+                  format: binary
+        default:
+          description: Unexpected error
+
+    post:
+      summary: upload image for product or user
+      operationId: uploadImage
+      x-codegen-request-body-name: images_link
+      requestBody:
+        content:
+          image/*: #* represent the image datatype
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: link for uplaoded image
+          content:
+            application/json:
+              schema:
+                type: string
+                format: url
+  /products:
+    get:
+      operationId: listProducts
+      tags:
+        - "Products"
+      summary: getting all products.
+      parameters:
+        - in: query
+          name: category
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: sort
+          schema:
+            type: string
+            enum:
+                - newest
+                - oldest
+                - high_to_low
+                - low_to_hight
+                - popularity
+        - in: query
+          name: min_price
+          schema: 
+            type: number
+        - in: query
+          name: max_price
+          schema:
+            type: number
+        # pagination support
+        - $ref: '#/components/parameters/limitParams'
+        - $ref: '#/components/parameters/pagingAfter'
+        - $ref: '#/components/parameters/pagingBefore'
+      responses:
+        "200":
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema:
+                type: object
+                required: 
+                  - limit
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/arrayOfProducts'
+                  pagging:
+                    $ref: '#/components/schemas/paging'
+                  limit:
+                    description: number of returned items
+                    type: integer
+
+        default:
+          description: Unexpected error  
+
+    post:
+      operationId: addProduct
+      tags:
+          - "Products"
+      summary: Creates a new product.
+      security:
+        - accessCode: [admin]
+
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Product_media'
+      responses:
+        '204':
+          description: Created
+        default:
+          description: Unexpected error
+
+  /products/analytics:
+    get:
+      operationId: listProductsAnalytics
+      tags: [Products,Admin]
+      security:
+        - accessCode: [admin]
+      summary: products data of number being sold in period
+      parameters:
+        - in: query
+          name: start_period
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: end_period
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: time_aggregation
+          schema:
+            type: string
+            enum: ['year','month','day']
+        # pagination support
+        - $ref: '#/components/parameters/limitParams'
+        - $ref: '#/components/parameters/pagingAfter'
+        - $ref: '#/components/parameters/pagingBefore'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - limit
+                properties:
+                  analytics:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product_analysis"
+                  pagging:
+                    $ref: "#/components/schemas/paging"
+                  limit:
+                    type: integer
+                    description: number of returned items
+
+  /products/{product_id}:
+    parameters:
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: integer
+    get:
+      operationId: getProductById
+      tags:
+          - "Products"
+      summary: Returns a products by ID.  
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        "400":
+          description: The specified product_id is invalid (not a number).
+        "404":
+          description: product with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+    put:
+      operationId: replaceProductById
+      security:
+        - accessCode: [admin]
+
+      tags:
+        - "Products"
+      summary: edit product information
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: edited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        "400":
+          description: The specified product_id is invalid (not a number).
+        "404":
+          description: product with the specified ID was not found.
+        default:
+          description: Unexpected error
+    delete:
+      operationId: deleteProductById
+      tags:
+        - "Products"
+      security:
+        - accessCode: [admin]
+      summary: updating product
+      responses:
+        '204': # check deletion code
+          description: delete selected product
+        "400":
+          description: The specified product_id is invalid (not a number).
+        "404":
+          description: product with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+  /catagories:
+    get:
+      operationId: listCatagories
+      tags:
+        - "Catagories"
+      summary: getting all Catagories.
+      responses:
+        "200":
+          description: A JSON array of Category
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        default:
+          description: Unexpected error
+
+    post:
+      operationId: addCatagories
+      tags:
+          - "Catagories"
+      security:
+        - accessCode: [admin]
+
+      summary: Creates a new catagort.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '204':
+          description: Created
+        default:
+          description: Unexpected error
+  
+  /catagories/{category_name}:
+    parameters:
+        - name: category_name
+          in: path
+          required: true
+          schema:
+            type: string
+
+    get:
+      operationId: getCategoryByName
+      tags:
+          - "Catagories"
+      summary: Returns a Category by its name.  
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        "404":
+          description: Category with the specified name was not found.
+        default:
+          description: Unexpected error
+
+    post:
+      operationId: updateCategoryByName
+      security:
+        - accessCode: [admin]
+
+      tags:
+        - "Catagories"
+      summary: renaming Category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '201':
+          description: edited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        "404":
+          description: Category with the specified name was not found.
+        default:
+          description: Unexpected error
+    delete:
+      operationId: deleteCategoryByName
+      security:
+        - accessCode: [admin]
+
+      tags:
+        - "Catagories"
+      summary: deleting category
+      responses:
+        '204': # check deletion code
+          description: delete selected Category
+        "404":
+          description: Category with the specified name was not found.
+        default:
+          description: Unexpected error
+
+  /catagries/{category_name}/products:
+    parameters:
+        - name: category_name
+          in: path
+          required: true
+          schema:
+            type: string
+
+    get:
+      deprecated: true
+      operationId: listProductsByCategory
+      tags:
+          - "Catagories"
+          - "Products"
+      summary: Returns a products by category Name.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        "404":
+          description: Category with the specified name was not found.
+        default:
+          description: Unexpected error
+  
+  /users:
+    get:
+      operationId: listUsers
+      security:
+        - accessCode: [admin]
+
+      tags:
+          - Admin
+      summary: Returns all regesterd users.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: Unexpected error
+    post:
+      operationId: addUser
+      summary: Add user new user with only mail
+      tags:
+        - User
+      description: create new user
+      requestBody:
+        required: true
+        content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    mail:
+                      type: string
+                      description: mail-address for verfication
+                      example: your-mail@host.com
+                    password:
+                      type: string
+                      description: new password assoiated with mail              
+      responses:
+        '200':
+          description: user created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: mail already in use
+        default:
+          description: Unexpected error
+
+  /users/{user_id}:
+    parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+    get:
+      operationId: getUserById
+      security:
+        - accessCode: [admin, client]
+      tags:
+          - User
+          - Admin
+      summary: Returns a User by ID.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+    post:
+      operationId: updateUserById
+      security:
+        - accessCode: [admin ,client]
+      tags:
+        - User
+        - Admin
+      summary: updating/create user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: edited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+    delete:
+      operationId: deleteUserById
+      summary: delet user account by id
+      tags:
+        - User
+        - Admin
+      security:
+        - accessCode: [admin, client]
+      responses:
+        '204': # check deletion code
+          description: delete selected user
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+  /users/{user_id}/address:
+    parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+    get:
+      operationId: listAddressByUserId
+      security:
+        - accessCode: [admin, client]
+      tags:
+          - User
+          - Address
+      summary: Returns addresses by User ID.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Address'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+    post:
+      security: 
+        - accessCode: [admin, client]
+      tags: 
+        - User
+        - Address
+      summary: add addresse to user.
+      operationId: addAddresseByUserId
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+        "400":
+          description: The specified userId is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+  /users/{user_id}/address/{address_id}:
+    parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: address_id
+          in: path
+          required: true
+          schema:
+            type: integer
+    put:
+      operationId: replaceAddressByUserById
+      security:
+        - accessCode: [admin ,client]
+      tags:
+        - User
+        - Address
+      summary: updating user address
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+      responses:
+        '201':
+          description: edited
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+    delete:
+      operationId: deleteAddressByUserById
+      summary: Delete user address by address ID and user id
+      tags:
+        - User
+        - Address
+      security:
+        - accessCode: [admin, client]
+      responses:
+        '204': # check deletion code
+          description: delete selected address
+        "400":
+          description: The specified user_id/address is invalid (not a number).
+        "404":
+          description: user/address with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+  /users/{user_id}/cart:
+    parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+    get:
+      operationId: listCartByUserId
+      security:
+        - accessCode: [admin, client]
+      tags:
+          - User
+          - Cart
+      summary: Returns cart by User ID.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+    put:
+      operationId: addCartByUserId
+      security:
+        - accessCode: [admin ,client]
+      tags:
+        - User
+        - Cart
+      summary: updating user cart
+      x-codegen-request-body-name: cartItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Cart_item'
+      responses:
+        '201':
+          description: replace cart_items for current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+    
+  /users/{user_id}/cart/item:
+    parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+    put:
+      operationId: addCartItemByUserId
+      security:
+        - accessCode: [admin ,client]
+      tags:
+        - User
+        - Cart
+      summary: adding/change count of item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart_item'
+      responses:
+        '201':
+          description: replace cart_items for current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+    
+  /users/{user_id}/cart/item/{product_id}:
+    parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: integer
+    # TODO add patch to edit number of items in cart
+    delete:
+      operationId: deleteCartItemByUserIdAndProductId
+      security:
+        - accessCode: [admin ,client]
+      tags:
+        - User
+        - Cart
+      summary: remove item from cart
+      
+      responses:
+        '201':
+          description: delete cart_items for current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+  /users/{user_id}/pending_items:
+    parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      operationId: listPendingItemsByUserId
+      security:
+        - accessCode: [admin, client]
+      tags:
+        - "Admin"
+        - "Cart"
+      summary: list pending items for user
+      responses:
+        '200':
+          description: pending cart
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+  /users/{user_id}/pending_items/{cart_id}:
+    parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: cart_id
+        in: path
+        required: true
+        schema:
+          type: integer
+    delete:
+      operationId: deletePendingItemsByUserId
+      security:
+        - accessCode: [admin]
+      tags:
+        - "Admin"
+        - "Cart"
+      summary: remove item from pending as mean to cancel order
+      responses:
+        '204':
+          description: items removed from pending  
+
+  /users/{user_id}/checkout:
+    post:
+      operationId: checkoutCart
+      security:
+        - accessCode: [admin, client]
+      tags:
+          - "User"
+          - "Cart"
+      summary: checkout user cart
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: checkout complate
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cart: 
+                    $ref: '#/components/schemas/Cart'
+                  transactions_info:
+                    type: string
+
+  /users/{user_id}/saved_items:
+    parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+    get:
+      operationId: listSavedItemsByUserId
+      security:
+        - accessCode: [admin, client]
+      tags:
+          - User
+          - SavedItems
+      summary: Returns SavedItems by User ID.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+    post:
+      operationId: addSavedItemsByUserId
+      security:
+        - accessCode: [admin ,client]
+      tags:
+        - User
+        - SavedItems
+      summary: adding user SavedItems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: SavedItems added for current user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+  
+  /users/{user_id}/saved_items/{product_id}:
+    delete:
+      operationId: deleteSavedItemsByUserIdAndProductId
+      security:
+        - accessCode: [admin ,client]
+      tags:
+        - User
+        - SavedItems
+      summary: remove item from SavedItems
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: product_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: remove item from saved list for current user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        "400":
+          description: The specified user_id is invalid (not a number).
+        "404":
+          description: user with the specified ID was not found.
+        default:
+          description: Unexpected error
+
+  /admin/profits:
+    get:
+      operationId: listAdminTotalProfit
+      summary: admin profit in defined period
+      security:
+        - accessCode: [admin]
+      tags: [Admin]
+      parameters:
+        - in: query
+          name: start_period
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: end_period
+          schema:
+            type: string
+            format: date
+      responses: 
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
+
+components:
+  schemas:
+
+    User:
+      description: customer or admin user 
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        password:
+          type: string
+        profile_picture:
+          type: string
+          format: url
+        address:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        address_href:
+          type: string
+        e_mail:
+          type: string
+          format: email
+          example: your-mail@host.com
+        phone_numbers:
+          type: array
+          items:
+            type: string
+        verfied:
+          type: boolean
+          description: is mail verfied or not
+        cart:
+          $ref: '#/components/schemas/Cart'
+        cart_href:
+          type: string
+      required:
+        - id
+        - name
+    Address:
+      description: user detailed address
+      properties:
+        country:
+          type: string
+          example: egypt
+        city:
+          type: string
+          example: cairo
+        street_address:
+          type: string
+          description: detailed address including street and landmarks
+        postal_code:
+          type: integer
+        type:
+          type: string
+          description: address relationg to customer
+          example: work address
+  
+    Category:
+      description: a group for related products
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maximum: 20
+          example: fruits
+        product_category_href:
+          type: string
+          example: /products?category=fruits
+      additionalProperties: false
+  
+    Product:
+      description: a shopping item a user can buy
+      required: 
+        - name
+        - price
+        - currency
+        - summary_disc
+        - category
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          example: apple
+        images_link:
+          type: array
+          items:
+            type: string
+        price:
+          type: number
+        currency:
+          type: string
+          enum: [usd, egp, eur]
+        summary_disc:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        available_stock:
+          type: integer
+      additionalProperties: false
+    
+    # to post a product with images NOTE this may be slow 
+    Product_media:
+      description: product data including media images
+      allOf:
+        - $ref: '#/components/schemas/Product'
+        - type: 'object'
+          properties:
+            images:
+              type: array
+              items:
+                type: string
+                format: binary
+          additionalProperties: false
+
+    Product_analysis:
+      description: give sold count of product in time period
+      allOf:
+        - $ref: '#/components/schemas/Product'
+        - type: 'object'
+          properties:
+            sold_counts:
+              type: array
+              items:
+                type: object
+                properties:
+                  sold_count:
+                    type: integer
+                  start_period:
+                    type: string
+                    format: date
+                  end_period:
+                    type: string
+                    format: date
+
+    Cart:
+      description: a list of products and there amount for shopping cart
+      properties:
+        id:
+          type: integer
+          format: int64
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cart_item'
+        total_price:
+          type: integer
+          example: 100.56
+          description: Total price in specified currency
+        currency:
+          type: string
+          enum: [usd, egp, eur]
+        
+    Cart_item:
+      description: product with count of it as cart item
+      properties:
+        product:
+          $ref: '#/components/schemas/Product'
+        count:
+          type: integer
+        product_href:
+          type: string
+    
+    arrayOfProducts:
+      description: products data in array
+      type: array
+      items:
+        $ref: '#/components/schemas/Product'
+    paging:
+      description: paggintaion fields that support next/prev
+      externalDocs:
+          url: https://developers.facebook.com/docs/graph-api/using-graph-api/v2.4#paging
+      properties:
+        cursor:
+          $ref: '#/components/schemas/cursor'        
+        previous:
+          description: The rest API endpoint that will return the previous page of data. If not included, this is the first page of data.
+          type: string
+          example: /products/?limit=25&after=NDMyNzQyODI3OTQw
+        next:
+          type: string
+          description: The rest API endpoint that will return the next page of data. If not included, this is the last page of data.
+          example: /products/?limit=25&before=NDMyNzQyODI3OTQw
+
+
+    cursor:          
+      description: paggination cursor 
+      properties:
+        before:
+          description: This is the cursor that points to the start of the page of data that has been returned.
+          type: string
+        after:
+          description: This is the cursor that points to the end of the page of data that has been returned.
+          type: string
+
+  securitySchemes:
+    accessCode:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: /oauth/token
+          refreshUrl: /oauth/refresh
+          scopes:
+            client: allows modifying resources clients
+            admin: can read/write admin resources
+            readonly: can read data for public resources
+
+  parameters:
+    limitParams:
+      in: query
+      name: limit
+      description: This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
+      schema:
+        type: integer
+        format: int64
+        default: 30
+        maximum: 80
+      required: false
+    pagingBefore:
+      in: query
+      name: before
+      description:  This is the cursor that points to the start of the page for prev page
+      schema: 
+        type: string
+      required: false
+    pagingAfter:
+      in: query
+      name: after
+      description: This is the cursor that points to the end of the page use for next page
+      schema: 
+        type: string          
+      required: false
+    # before and after cannot exist at same time this link should be genrated by server
