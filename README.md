@@ -3,7 +3,7 @@
 <a name="documentation-for-api-endpoints"></a>
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://virtserver.swaggerhub.com/abdo1819/delta_shop/1.0.0*
+All URIs are relative to *https://delta-shop.github.io/end-point*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

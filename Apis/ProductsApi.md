@@ -1,6 +1,6 @@
 # ProductsApi
 
-All URIs are relative to *https://virtserver.swaggerhub.com/abdo1819/delta_shop/1.0.0*
+All URIs are relative to *https://delta-shop.github.io/end-point*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
