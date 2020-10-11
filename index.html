@@ -1222,6 +1222,9 @@ ul.nav-tabs {
                     <li data-group="Admin" data-name="listAdminTotalProfit" class="">
                       <a href="#api-Admin-listAdminTotalProfit">listAdminTotalProfit</a>
                     </li>
+                    <li data-group="Admin" data-name="listPendingItems" class="">
+                      <a href="#api-Admin-listPendingItems">listPendingItems</a>
+                    </li>
                     <li data-group="Admin" data-name="listPendingItemsByUserId" class="">
                       <a href="#api-Admin-listPendingItemsByUserId">listPendingItemsByUserId</a>
                     </li>
@@ -4793,6 +4796,614 @@ pub fn main() {
                                     </script>
                                   </div>
                                   <input id='responses-Admin-listAdminTotalProfit-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Admin-listPendingItems">
+                      <article id="api-Admin-listPendingItems-0" data-group="User" data-name="listPendingItems" data-version="0">
+                        <div class="pull-left">
+                          <h1>listPendingItems</h1>
+                          <p>list all pending items</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/pending_items</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Admin-listPendingItems-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Admin-listPendingItems-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Admin-listPendingItems-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Admin-listPendingItems-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Admin-listPendingItems-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Admin-listPendingItems-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Admin-listPendingItems-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Admin-listPendingItems-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Admin-listPendingItems-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Admin-listPendingItems-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Admin-listPendingItems-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Admin-listPendingItems-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Admin-listPendingItems-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://delta-shop.github.io/end-point/pending_items?category=&sort=&min_price=&max_price=&start_period=&end_period=&limit=&after=&before="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Admin-listPendingItems-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure OAuth2 access token for authorization: accessCode
+        OAuth accessCode = (OAuth) defaultClient.getAuthentication("accessCode");
+        accessCode.setAccessToken("YOUR ACCESS TOKEN");
+
+        AdminApi apiInstance = new AdminApi();
+        String category = category_example; // String | 
+        String sort = sort_example; // String | 
+        BigDecimal minPrice = 8.14; // BigDecimal | 
+        BigDecimal maxPrice = 8.14; // BigDecimal | 
+        date startPeriod = 2013-10-20; // date | 
+        date endPeriod = 2013-10-20; // date | 
+        Long limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
+        String after = after_example; // String | This is the cursor that points to the end of the page use for next page
+        String before = before_example; // String | This is the cursor that points to the start of the page for prev page
+        try {
+            array[Cart] result = apiInstance.listPendingItems(category, sort, minPrice, maxPrice, startPeriod, endPeriod, limit, after, before);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#listPendingItems");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Admin-listPendingItems-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.AdminApi;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        AdminApi apiInstance = new AdminApi();
+        String category = category_example; // String | 
+        String sort = sort_example; // String | 
+        BigDecimal minPrice = 8.14; // BigDecimal | 
+        BigDecimal maxPrice = 8.14; // BigDecimal | 
+        date startPeriod = 2013-10-20; // date | 
+        date endPeriod = 2013-10-20; // date | 
+        Long limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
+        String after = after_example; // String | This is the cursor that points to the end of the page use for next page
+        String before = before_example; // String | This is the cursor that points to the start of the page for prev page
+        try {
+            array[Cart] result = apiInstance.listPendingItems(category, sort, minPrice, maxPrice, startPeriod, endPeriod, limit, after, before);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#listPendingItems");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Admin-listPendingItems-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Admin-listPendingItems-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: accessCode)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+String *category = category_example; //  (optional) (default to null)
+String *sort = sort_example; //  (optional) (default to null)
+BigDecimal *minPrice = 8.14; //  (optional) (default to null)
+BigDecimal *maxPrice = 8.14; //  (optional) (default to null)
+date *startPeriod = 2013-10-20; //  (optional) (default to null)
+date *endPeriod = 2013-10-20; //  (optional) (default to null)
+Long *limit = 789; // This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional) (default to 30)
+String *after = after_example; // This is the cursor that points to the end of the page use for next page (optional) (default to null)
+String *before = before_example; // This is the cursor that points to the start of the page for prev page (optional) (default to null)
+
+AdminApi *apiInstance = [[AdminApi alloc] init];
+
+// list all pending items
+[apiInstance listPendingItemsWith:category
+    sort:sort
+    minPrice:minPrice
+    maxPrice:maxPrice
+    startPeriod:startPeriod
+    endPeriod:endPeriod
+    limit:limit
+    after:after
+    before:before
+              completionHandler: ^(array[Cart] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Admin-listPendingItems-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var DelatShop = require('delat_shop');
+var defaultClient = DelatShop.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: accessCode
+var accessCode = defaultClient.authentications['accessCode'];
+accessCode.accessToken = "YOUR ACCESS TOKEN"
+
+var api = new DelatShop.AdminApi()
+var opts = {
+  'category': category_example, // {String} 
+  'sort': sort_example, // {String} 
+  'minPrice': 8.14, // {BigDecimal} 
+  'maxPrice': 8.14, // {BigDecimal} 
+  'startPeriod': 2013-10-20, // {date} 
+  'endPeriod': 2013-10-20, // {date} 
+  'limit': 789, // {Long} This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
+  'after': after_example, // {String} This is the cursor that points to the end of the page use for next page
+  'before': before_example // {String} This is the cursor that points to the start of the page for prev page
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.listPendingItems(opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Admin-listPendingItems-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Admin-listPendingItems-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class listPendingItemsExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: accessCode
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new AdminApi();
+            var category = category_example;  // String |  (optional)  (default to null)
+            var sort = sort_example;  // String |  (optional)  (default to null)
+            var minPrice = 8.14;  // BigDecimal |  (optional)  (default to null)
+            var maxPrice = 8.14;  // BigDecimal |  (optional)  (default to null)
+            var startPeriod = 2013-10-20;  // date |  (optional)  (default to null)
+            var endPeriod = 2013-10-20;  // date |  (optional)  (default to null)
+            var limit = 789;  // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional)  (default to 30)
+            var after = after_example;  // String | This is the cursor that points to the end of the page use for next page (optional)  (default to null)
+            var before = before_example;  // String | This is the cursor that points to the start of the page for prev page (optional)  (default to null)
+
+            try
+            {
+                // list all pending items
+                array[Cart] result = apiInstance.listPendingItems(category, sort, minPrice, maxPrice, startPeriod, endPeriod, limit, after, before);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AdminApi.listPendingItems: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Admin-listPendingItems-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: accessCode
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$api_instance = new OpenAPITools\Client\Api\AdminApi();
+$category = category_example; // String | 
+$sort = sort_example; // String | 
+$minPrice = 8.14; // BigDecimal | 
+$maxPrice = 8.14; // BigDecimal | 
+$startPeriod = 2013-10-20; // date | 
+$endPeriod = 2013-10-20; // date | 
+$limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
+$after = after_example; // String | This is the cursor that points to the end of the page use for next page
+$before = before_example; // String | This is the cursor that points to the start of the page for prev page
+
+try {
+    $result = $api_instance->listPendingItems($category, $sort, $minPrice, $maxPrice, $startPeriod, $endPeriod, $limit, $after, $before);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdminApi->listPendingItems: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Admin-listPendingItems-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::AdminApi;
+
+# Configure OAuth2 access token for authorization: accessCode
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+my $api_instance = WWW::OPenAPIClient::AdminApi->new();
+my $category = category_example; # String | 
+my $sort = sort_example; # String | 
+my $minPrice = 8.14; # BigDecimal | 
+my $maxPrice = 8.14; # BigDecimal | 
+my $startPeriod = 2013-10-20; # date | 
+my $endPeriod = 2013-10-20; # date | 
+my $limit = 789; # Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
+my $after = after_example; # String | This is the cursor that points to the end of the page use for next page
+my $before = before_example; # String | This is the cursor that points to the start of the page for prev page
+
+eval { 
+    my $result = $api_instance->listPendingItems(category => $category, sort => $sort, minPrice => $minPrice, maxPrice => $maxPrice, startPeriod => $startPeriod, endPeriod => $endPeriod, limit => $limit, after => $after, before => $before);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling AdminApi->listPendingItems: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Admin-listPendingItems-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: accessCode
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = openapi_client.AdminApi()
+category = category_example # String |  (optional) (default to null)
+sort = sort_example # String |  (optional) (default to null)
+minPrice = 8.14 # BigDecimal |  (optional) (default to null)
+maxPrice = 8.14 # BigDecimal |  (optional) (default to null)
+startPeriod = 2013-10-20 # date |  (optional) (default to null)
+endPeriod = 2013-10-20 # date |  (optional) (default to null)
+limit = 789 # Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional) (default to 30)
+after = after_example # String | This is the cursor that points to the end of the page use for next page (optional) (default to null)
+before = before_example # String | This is the cursor that points to the start of the page for prev page (optional) (default to null)
+
+try: 
+    # list all pending items
+    api_response = api_instance.list_pending_items(category=category, sort=sort, minPrice=minPrice, maxPrice=maxPrice, startPeriod=startPeriod, endPeriod=endPeriod, limit=limit, after=after, before=before)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AdminApi->listPendingItems: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Admin-listPendingItems-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate AdminApi;
+
+pub fn main() {
+    let category = category_example; // String
+    let sort = sort_example; // String
+    let minPrice = 8.14; // BigDecimal
+    let maxPrice = 8.14; // BigDecimal
+    let startPeriod = 2013-10-20; // date
+    let endPeriod = 2013-10-20; // date
+    let limit = 789; // Long
+    let after = after_example; // String
+    let before = before_example; // String
+
+    let mut context = AdminApi::Context::default();
+    let result = client.listPendingItems(category, sort, minPrice, maxPrice, startPeriod, endPeriod, limit, after, before, &context).wait();
+    println!("{:?}", result);
+
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                              <tr>
+                                <td>admin</td>
+                                <td>can read/write admin resources</td>
+                              </tr>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">category</td>
+<td>
+
+
+    <div id="d2e199_listPendingItems_category">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">sort</td>
+<td>
+
+
+    <div id="d2e199_listPendingItems_sort">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">min_price</td>
+<td>
+
+
+    <div id="d2e199_listPendingItems_minPrice">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    BigDecimal
+                </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">max_price</td>
+<td>
+
+
+    <div id="d2e199_listPendingItems_maxPrice">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    BigDecimal
+                </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">start_period</td>
+<td>
+
+
+    <div id="d2e199_listPendingItems_startPeriod">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    date
+                </span>
+                    <span class="format">
+                        (date)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">end_period</td>
+<td>
+
+
+    <div id="d2e199_listPendingItems_endPeriod">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    date
+                </span>
+                    <span class="format">
+                        (date)
+                    </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">limit</td>
+<td>
+
+
+    <div id="d2e199_listPendingItems_limit">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+                    <div class="inner description marked">
+This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">after</td>
+<td>
+
+
+    <div id="d2e199_listPendingItems_after">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This is the cursor that points to the end of the page use for next page
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">before</td>
+<td>
+
+
+    <div id="d2e199_listPendingItems_before">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description marked">
+This is the cursor that points to the start of the page for prev page
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Admin-listPendingItems-title-200"></h3>
+                            <p id="examples-Admin-listPendingItems-description-200" class="marked"></p>
+                            <script>
+                              var responseAdmin200_description = `list pending items`;
+                              var responseAdmin200_description_break = responseAdmin200_description.indexOf('\n');
+                              if (responseAdmin200_description_break == -1) {
+                                $("#examples-Admin-listPendingItems-title-200").text("Status: 200 - " + responseAdmin200_description);
+                              } else {
+                                $("#examples-Admin-listPendingItems-title-200").text("Status: 200 - " + responseAdmin200_description.substring(0, responseAdmin200_description_break));
+                                $("#examples-Admin-listPendingItems-description-200").html(responseAdmin200_description.substring(responseAdmin200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Admin-listPendingItems-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Admin-listPendingItems-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Admin-listPendingItems-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Admin-listPendingItems-200-schema">
+                                  <div id="responses-Admin-listPendingItems-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "list pending items",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "allOf" : [ {
+            "$ref" : "#/components/schemas/Cart"
+          }, {
+            "type" : "object",
+            "properties" : {
+              "userId" : {
+                "type" : "integer"
+              }
+            }
+          } ]
+        }
+      }
+    }
+  }
+};
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                            schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-Admin-listPendingItems-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Admin-listPendingItems-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-Admin-listPendingItems-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
                         </article>

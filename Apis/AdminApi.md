@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**deleteUserById**](AdminApi.md#deleteUserById) | **DELETE** /users/{user_id} | delet user account by id
 [**getUserById**](AdminApi.md#getUserById) | **GET** /users/{user_id} | Returns a User by ID.
 [**listAdminTotalProfit**](AdminApi.md#listAdminTotalProfit) | **GET** /admin/profits | admin profit in defined period
+[**listPendingItems**](AdminApi.md#listPendingItems) | **GET** /pending_items | list all pending items
 [**listPendingItemsByUserId**](AdminApi.md#listPendingItemsByUserId) | **GET** /users/{user_id}/pending_items | list pending items for user
 [**listProductsAnalytics**](AdminApi.md#listProductsAnalytics) | **GET** /products/analytics | products data of number being sold in period
 [**listUsers**](AdminApi.md#listUsers) | **GET** /users | Returns all regesterd users.
@@ -106,6 +107,39 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BigDecimal**](../\Models/number.md)
+
+### Authorization
+
+[accessCode](../README.md#accessCode)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="listPendingItems"></a>
+# **listPendingItems**
+> List listPendingItems(category, sort, minPrice, maxPrice, startPeriod, endPeriod, limit, after, before)
+
+list all pending items
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **category** | **String**|  | [optional] [default to null]
+ **sort** | **String**|  | [optional] [default to null] [enum: newest, oldest, high_to_low, low_to_hight, popularity]
+ **minPrice** | **BigDecimal**|  | [optional] [default to null]
+ **maxPrice** | **BigDecimal**|  | [optional] [default to null]
+ **startPeriod** | **date**|  | [optional] [default to null]
+ **endPeriod** | **date**|  | [optional] [default to null]
+ **limit** | **Long**| This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. | [optional] [default to 30]
+ **after** | **String**| This is the cursor that points to the end of the page use for next page | [optional] [default to null]
+ **before** | **String**| This is the cursor that points to the start of the page for prev page | [optional] [default to null]
+
+### Return type
+
+[**List**](../\Models/Cart.md)
 
 ### Authorization
 

@@ -15,6 +15,7 @@ Class | Method | HTTP request | Description
 *AdminApi* | [**deleteUserById**](Apis/AdminApi.md#deleteuserbyid) | **DELETE** /users/{user_id} | delet user account by id
 *AdminApi* | [**getUserById**](Apis/AdminApi.md#getuserbyid) | **GET** /users/{user_id} | Returns a User by ID.
 *AdminApi* | [**listAdminTotalProfit**](Apis/AdminApi.md#listadmintotalprofit) | **GET** /admin/profits | admin profit in defined period
+*AdminApi* | [**listPendingItems**](Apis/AdminApi.md#listpendingitems) | **GET** /pending_items | list all pending items
 *AdminApi* | [**listPendingItemsByUserId**](Apis/AdminApi.md#listpendingitemsbyuserid) | **GET** /users/{user_id}/pending_items | list pending items for user
 *AdminApi* | [**listProductsAnalytics**](Apis/AdminApi.md#listproductsanalytics) | **GET** /products/analytics | products data of number being sold in period
 *AdminApi* | [**listUsers**](Apis/AdminApi.md#listusers) | **GET** /users | Returns all regesterd users.
