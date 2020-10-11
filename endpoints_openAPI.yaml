@@ -788,6 +788,40 @@ paths:
           description: user with the specified ID was not found.
         default:
           description: Unexpected error
+  /pending_items:
+    get:
+      operationId: listPendingItems
+      security: 
+        - accessCode: [admin]
+      tags:
+        - admin
+      parameters:
+        - $ref: '#/components/parameters/category'
+        - $ref: '#/components/parameters/sort_product'
+        - $ref: '#/components/parameters/min_price'
+        - $ref: '#/components/parameters/max_price'
+        - $ref: '#/components/parameters/start_period'
+        - $ref: '#/components/parameters/end_period'
+        # pagination support
+        - $ref: '#/components/parameters/limitParams'
+        - $ref: '#/components/parameters/pagingAfter'
+        - $ref: '#/components/parameters/pagingBefore'
+
+      summary: list all pending items 
+      responses: 
+        '200':
+          description: list pending items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  allOf:
+                    - $ref: '#/components/schemas/Cart'
+                    - type: object
+                      properties:
+                        userId:
+                          type: integer
 
   /users/{user_id}/pending_items:
     parameters:
@@ -1234,4 +1268,43 @@ components:
       schema: 
         type: string          
       required: false
-    # before and after cannot exist at same time this link should be genrated by server
+    sort_product:
+      in: query
+      name: sort
+      schema:
+        type: string
+        enum:
+            - newest
+            - oldest
+            - high_to_low
+            - low_to_hight
+            - popularity
+    min_price:
+      in: query
+      name: min_price
+      schema: 
+        type: number
+    max_price:
+      in: query
+      name: max_price
+      schema:
+        type: number
+    category:
+      in: query
+      name: category
+      schema:
+        type: string
+      required: false
+    start_period:
+      in: query
+      name: start_period
+      schema:
+        type: string
+        format: date
+    end_period:
+      in: query
+      name: end_period
+      schema:
+        type: string
+        format: date
+  # before and after cannot exist at same time this link should be genrated by server
