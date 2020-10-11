@@ -68,29 +68,10 @@ paths:
         - "Products"
       summary: getting all products.
       parameters:
-        - in: query
-          name: category
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: sort
-          schema:
-            type: string
-            enum:
-                - newest
-                - oldest
-                - high_to_low
-                - low_to_hight
-                - popularity
-        - in: query
-          name: min_price
-          schema: 
-            type: number
-        - in: query
-          name: max_price
-          schema:
-            type: number
+        - $ref: '#/components/parameters/category'
+        - $ref: '#/components/parameters/sort_product'
+        - $ref: '#/components/parameters/min_price'
+        - $ref: '#/components/parameters/max_price'
         # pagination support
         - $ref: '#/components/parameters/limitParams'
         - $ref: '#/components/parameters/pagingAfter'
@@ -146,16 +127,8 @@ paths:
         - accessCode: [admin]
       summary: products data of number being sold in period
       parameters:
-        - in: query
-          name: start_period
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: end_period
-          schema:
-            type: string
-            format: date
+        - $ref: '#/components/parameters/start_period'
+        - $ref: '#/components/parameters/end_period'
         - in: query
           name: time_aggregation
           schema:
