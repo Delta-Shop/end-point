@@ -72,6 +72,7 @@ paths:
         - $ref: '#/components/parameters/sort_product'
         - $ref: '#/components/parameters/min_price'
         - $ref: '#/components/parameters/max_price'
+        - $ref: '#/components/parameters/default_search'
         # pagination support
         - $ref: '#/components/parameters/limitParams'
         - $ref: '#/components/parameters/pagingAfter'
@@ -129,6 +130,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/start_period'
         - $ref: '#/components/parameters/end_period'
+        - $ref: '#/components/parameters/default_search'
         - in: query
           name: time_aggregation
           schema:
@@ -1241,6 +1243,7 @@ components:
       schema: 
         type: string          
       required: false
+    # before and after cannot exist at same time this link should be genrated by server
     sort_product:
       in: query
       name: sort
@@ -1280,4 +1283,8 @@ components:
       schema:
         type: string
         format: date
-  # before and after cannot exist at same time this link should be genrated by server
+    default_search:
+      in: query
+      name: q
+      schema:
+        type: string
