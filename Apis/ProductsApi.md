@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 <a name="listProducts"></a>
 # **listProducts**
-> inline_response_200 listProducts(category, sort, minPrice, maxPrice, limit, after, before)
+> inline_response_200 listProducts(category, sort, minPrice, maxPrice, q, limit, after, before)
 
 getting all products.
 
@@ -99,6 +99,7 @@ Name | Type | Description  | Notes
  **sort** | **String**|  | [optional] [default to null] [enum: newest, oldest, high_to_low, low_to_hight, popularity]
  **minPrice** | **BigDecimal**|  | [optional] [default to null]
  **maxPrice** | **BigDecimal**|  | [optional] [default to null]
+ **q** | **String**|  | [optional] [default to null]
  **limit** | **Long**| This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. | [optional] [default to 30]
  **after** | **String**| This is the cursor that points to the end of the page use for next page | [optional] [default to null]
  **before** | **String**| This is the cursor that points to the start of the page for prev page | [optional] [default to null]
@@ -118,7 +119,7 @@ Name | Type | Description  | Notes
 
 <a name="listProductsAnalytics"></a>
 # **listProductsAnalytics**
-> inline_response_200_1 listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before)
+> inline_response_200_1 listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before)
 
 products data of number being sold in period
 
@@ -128,6 +129,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startPeriod** | **date**|  | [optional] [default to null]
  **endPeriod** | **date**|  | [optional] [default to null]
+ **q** | **String**|  | [optional] [default to null]
  **timeAggregation** | **String**|  | [optional] [default to null] [enum: year, month, day]
  **limit** | **Long**| This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. | [optional] [default to 30]
  **after** | **String**| This is the cursor that points to the end of the page use for next page | [optional] [default to null]

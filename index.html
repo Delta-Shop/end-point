@@ -870,7 +870,8 @@ ul.nav-tabs {
   "properties" : {
     "id" : {
       "type" : "integer",
-      "format" : "int64"
+      "format" : "int64",
+      "readOnly" : true
     },
     "items" : {
       "type" : "array",
@@ -909,7 +910,8 @@ ul.nav-tabs {
   "properties" : {
     "id" : {
       "type" : "integer",
-      "format" : "int64"
+      "format" : "int64",
+      "readOnly" : true
     },
     "name" : {
       "maximum" : 20,
@@ -1133,7 +1135,8 @@ ul.nav-tabs {
   "properties" : {
     "id" : {
       "type" : "integer",
-      "format" : "int64"
+      "format" : "int64",
+      "readOnly" : true
     },
     "name" : {
       "type" : "string"
@@ -5813,7 +5816,7 @@ pub fn main() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Admin-listProductsAnalytics-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://delta-shop.github.io/end-point/products/analytics?start_period=&end_period=&time_aggregation=&limit=&after=&before="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://delta-shop.github.io/end-point/products/analytics?start_period=&end_period=&q=&time_aggregation=&limit=&after=&before="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Admin-listProductsAnalytics-0-java">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
@@ -5836,12 +5839,13 @@ public class AdminApiExample {
         AdminApi apiInstance = new AdminApi();
         date startPeriod = 2013-10-20; // date | 
         date endPeriod = 2013-10-20; // date | 
+        String q = q_example; // String | 
         String timeAggregation = timeAggregation_example; // String | 
         Long limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
         String after = after_example; // String | This is the cursor that points to the end of the page use for next page
         String before = before_example; // String | This is the cursor that points to the start of the page for prev page
         try {
-            inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before);
+            inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdminApi#listProductsAnalytics");
@@ -5861,12 +5865,13 @@ public class AdminApiExample {
         AdminApi apiInstance = new AdminApi();
         date startPeriod = 2013-10-20; // date | 
         date endPeriod = 2013-10-20; // date | 
+        String q = q_example; // String | 
         String timeAggregation = timeAggregation_example; // String | 
         Long limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
         String after = after_example; // String | This is the cursor that points to the end of the page use for next page
         String before = before_example; // String | This is the cursor that points to the start of the page for prev page
         try {
-            inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before);
+            inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdminApi#listProductsAnalytics");
@@ -5887,6 +5892,7 @@ public class AdminApiExample {
 
 date *startPeriod = 2013-10-20; //  (optional) (default to null)
 date *endPeriod = 2013-10-20; //  (optional) (default to null)
+String *q = q_example; //  (optional) (default to null)
 String *timeAggregation = timeAggregation_example; //  (optional) (default to null)
 Long *limit = 789; // This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional) (default to 30)
 String *after = after_example; // This is the cursor that points to the end of the page use for next page (optional) (default to null)
@@ -5897,6 +5903,7 @@ AdminApi *apiInstance = [[AdminApi alloc] init];
 // products data of number being sold in period
 [apiInstance listProductsAnalyticsWith:startPeriod
     endPeriod:endPeriod
+    q:q
     timeAggregation:timeAggregation
     limit:limit
     after:after
@@ -5924,6 +5931,7 @@ var api = new DelatShop.AdminApi()
 var opts = {
   'startPeriod': 2013-10-20, // {date} 
   'endPeriod': 2013-10-20, // {date} 
+  'q': q_example, // {String} 
   'timeAggregation': timeAggregation_example, // {String} 
   'limit': 789, // {Long} This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
   'after': after_example, // {String} This is the cursor that points to the end of the page use for next page
@@ -5964,6 +5972,7 @@ namespace Example
             var apiInstance = new AdminApi();
             var startPeriod = 2013-10-20;  // date |  (optional)  (default to null)
             var endPeriod = 2013-10-20;  // date |  (optional)  (default to null)
+            var q = q_example;  // String |  (optional)  (default to null)
             var timeAggregation = timeAggregation_example;  // String |  (optional)  (default to null)
             var limit = 789;  // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional)  (default to 30)
             var after = after_example;  // String | This is the cursor that points to the end of the page use for next page (optional)  (default to null)
@@ -5972,7 +5981,7 @@ namespace Example
             try
             {
                 // products data of number being sold in period
-                inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before);
+                inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -5995,13 +6004,14 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YO
 $api_instance = new OpenAPITools\Client\Api\AdminApi();
 $startPeriod = 2013-10-20; // date | 
 $endPeriod = 2013-10-20; // date | 
+$q = q_example; // String | 
 $timeAggregation = timeAggregation_example; // String | 
 $limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
 $after = after_example; // String | This is the cursor that points to the end of the page use for next page
 $before = before_example; // String | This is the cursor that points to the start of the page for prev page
 
 try {
-    $result = $api_instance->listProductsAnalytics($startPeriod, $endPeriod, $timeAggregation, $limit, $after, $before);
+    $result = $api_instance->listProductsAnalytics($startPeriod, $endPeriod, $q, $timeAggregation, $limit, $after, $before);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->listProductsAnalytics: ', $e->getMessage(), PHP_EOL;
@@ -6020,13 +6030,14 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 my $api_instance = WWW::OPenAPIClient::AdminApi->new();
 my $startPeriod = 2013-10-20; # date | 
 my $endPeriod = 2013-10-20; # date | 
+my $q = q_example; # String | 
 my $timeAggregation = timeAggregation_example; # String | 
 my $limit = 789; # Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
 my $after = after_example; # String | This is the cursor that points to the end of the page use for next page
 my $before = before_example; # String | This is the cursor that points to the start of the page for prev page
 
 eval { 
-    my $result = $api_instance->listProductsAnalytics(startPeriod => $startPeriod, endPeriod => $endPeriod, timeAggregation => $timeAggregation, limit => $limit, after => $after, before => $before);
+    my $result = $api_instance->listProductsAnalytics(startPeriod => $startPeriod, endPeriod => $endPeriod, q => $q, timeAggregation => $timeAggregation, limit => $limit, after => $after, before => $before);
     print Dumper($result);
 };
 if ($@) {
@@ -6048,6 +6059,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = openapi_client.AdminApi()
 startPeriod = 2013-10-20 # date |  (optional) (default to null)
 endPeriod = 2013-10-20 # date |  (optional) (default to null)
+q = q_example # String |  (optional) (default to null)
 timeAggregation = timeAggregation_example # String |  (optional) (default to null)
 limit = 789 # Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional) (default to 30)
 after = after_example # String | This is the cursor that points to the end of the page use for next page (optional) (default to null)
@@ -6055,7 +6067,7 @@ before = before_example # String | This is the cursor that points to the start o
 
 try: 
     # products data of number being sold in period
-    api_response = api_instance.list_products_analytics(startPeriod=startPeriod, endPeriod=endPeriod, timeAggregation=timeAggregation, limit=limit, after=after, before=before)
+    api_response = api_instance.list_products_analytics(startPeriod=startPeriod, endPeriod=endPeriod, q=q, timeAggregation=timeAggregation, limit=limit, after=after, before=before)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->listProductsAnalytics: %s\n" % e)</code></pre>
@@ -6067,13 +6079,14 @@ except ApiException as e:
 pub fn main() {
     let startPeriod = 2013-10-20; // date
     let endPeriod = 2013-10-20; // date
+    let q = q_example; // String
     let timeAggregation = timeAggregation_example; // String
     let limit = 789; // Long
     let after = after_example; // String
     let before = before_example; // String
 
     let mut context = AdminApi::Context::default();
-    let result = client.listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before, &context).wait();
+    let result = client.listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before, &context).wait();
     println!("{:?}", result);
 
 }
@@ -6136,6 +6149,23 @@ pub fn main() {
                     <span class="format">
                         (date)
                     </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">q</td>
+<td>
+
+
+    <div id="d2e199_listProductsAnalytics_q">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
 
             </div>
         </div>
@@ -14929,7 +14959,7 @@ pub fn main() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Products-listProducts-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://delta-shop.github.io/end-point/products?category=&sort=&min_price=&max_price=&limit=&after=&before="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://delta-shop.github.io/end-point/products?category=&sort=&min_price=&max_price=&q=&limit=&after=&before="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Products-listProducts-0-java">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
@@ -14954,11 +14984,12 @@ public class ProductsApiExample {
         String sort = sort_example; // String | 
         BigDecimal minPrice = 8.14; // BigDecimal | 
         BigDecimal maxPrice = 8.14; // BigDecimal | 
+        String q = q_example; // String | 
         Long limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
         String after = after_example; // String | This is the cursor that points to the end of the page use for next page
         String before = before_example; // String | This is the cursor that points to the start of the page for prev page
         try {
-            inline_response_200 result = apiInstance.listProducts(category, sort, minPrice, maxPrice, limit, after, before);
+            inline_response_200 result = apiInstance.listProducts(category, sort, minPrice, maxPrice, q, limit, after, before);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProductsApi#listProducts");
@@ -14980,11 +15011,12 @@ public class ProductsApiExample {
         String sort = sort_example; // String | 
         BigDecimal minPrice = 8.14; // BigDecimal | 
         BigDecimal maxPrice = 8.14; // BigDecimal | 
+        String q = q_example; // String | 
         Long limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
         String after = after_example; // String | This is the cursor that points to the end of the page use for next page
         String before = before_example; // String | This is the cursor that points to the start of the page for prev page
         try {
-            inline_response_200 result = apiInstance.listProducts(category, sort, minPrice, maxPrice, limit, after, before);
+            inline_response_200 result = apiInstance.listProducts(category, sort, minPrice, maxPrice, q, limit, after, before);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProductsApi#listProducts");
@@ -15007,6 +15039,7 @@ String *category = category_example; //  (optional) (default to null)
 String *sort = sort_example; //  (optional) (default to null)
 BigDecimal *minPrice = 8.14; //  (optional) (default to null)
 BigDecimal *maxPrice = 8.14; //  (optional) (default to null)
+String *q = q_example; //  (optional) (default to null)
 Long *limit = 789; // This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional) (default to 30)
 String *after = after_example; // This is the cursor that points to the end of the page use for next page (optional) (default to null)
 String *before = before_example; // This is the cursor that points to the start of the page for prev page (optional) (default to null)
@@ -15018,6 +15051,7 @@ ProductsApi *apiInstance = [[ProductsApi alloc] init];
     sort:sort
     minPrice:minPrice
     maxPrice:maxPrice
+    q:q
     limit:limit
     after:after
     before:before
@@ -15046,6 +15080,7 @@ var opts = {
   'sort': sort_example, // {String} 
   'minPrice': 8.14, // {BigDecimal} 
   'maxPrice': 8.14, // {BigDecimal} 
+  'q': q_example, // {String} 
   'limit': 789, // {Long} This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
   'after': after_example, // {String} This is the cursor that points to the end of the page use for next page
   'before': before_example // {String} This is the cursor that points to the start of the page for prev page
@@ -15087,6 +15122,7 @@ namespace Example
             var sort = sort_example;  // String |  (optional)  (default to null)
             var minPrice = 8.14;  // BigDecimal |  (optional)  (default to null)
             var maxPrice = 8.14;  // BigDecimal |  (optional)  (default to null)
+            var q = q_example;  // String |  (optional)  (default to null)
             var limit = 789;  // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional)  (default to 30)
             var after = after_example;  // String | This is the cursor that points to the end of the page use for next page (optional)  (default to null)
             var before = before_example;  // String | This is the cursor that points to the start of the page for prev page (optional)  (default to null)
@@ -15094,7 +15130,7 @@ namespace Example
             try
             {
                 // getting all products.
-                inline_response_200 result = apiInstance.listProducts(category, sort, minPrice, maxPrice, limit, after, before);
+                inline_response_200 result = apiInstance.listProducts(category, sort, minPrice, maxPrice, q, limit, after, before);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -15119,12 +15155,13 @@ $category = category_example; // String |
 $sort = sort_example; // String | 
 $minPrice = 8.14; // BigDecimal | 
 $maxPrice = 8.14; // BigDecimal | 
+$q = q_example; // String | 
 $limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
 $after = after_example; // String | This is the cursor that points to the end of the page use for next page
 $before = before_example; // String | This is the cursor that points to the start of the page for prev page
 
 try {
-    $result = $api_instance->listProducts($category, $sort, $minPrice, $maxPrice, $limit, $after, $before);
+    $result = $api_instance->listProducts($category, $sort, $minPrice, $maxPrice, $q, $limit, $after, $before);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductsApi->listProducts: ', $e->getMessage(), PHP_EOL;
@@ -15145,12 +15182,13 @@ my $category = category_example; # String |
 my $sort = sort_example; # String | 
 my $minPrice = 8.14; # BigDecimal | 
 my $maxPrice = 8.14; # BigDecimal | 
+my $q = q_example; # String | 
 my $limit = 789; # Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
 my $after = after_example; # String | This is the cursor that points to the end of the page use for next page
 my $before = before_example; # String | This is the cursor that points to the start of the page for prev page
 
 eval { 
-    my $result = $api_instance->listProducts(category => $category, sort => $sort, minPrice => $minPrice, maxPrice => $maxPrice, limit => $limit, after => $after, before => $before);
+    my $result = $api_instance->listProducts(category => $category, sort => $sort, minPrice => $minPrice, maxPrice => $maxPrice, q => $q, limit => $limit, after => $after, before => $before);
     print Dumper($result);
 };
 if ($@) {
@@ -15174,13 +15212,14 @@ category = category_example # String |  (optional) (default to null)
 sort = sort_example # String |  (optional) (default to null)
 minPrice = 8.14 # BigDecimal |  (optional) (default to null)
 maxPrice = 8.14 # BigDecimal |  (optional) (default to null)
+q = q_example # String |  (optional) (default to null)
 limit = 789 # Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional) (default to 30)
 after = after_example # String | This is the cursor that points to the end of the page use for next page (optional) (default to null)
 before = before_example # String | This is the cursor that points to the start of the page for prev page (optional) (default to null)
 
 try: 
     # getting all products.
-    api_response = api_instance.list_products(category=category, sort=sort, minPrice=minPrice, maxPrice=maxPrice, limit=limit, after=after, before=before)
+    api_response = api_instance.list_products(category=category, sort=sort, minPrice=minPrice, maxPrice=maxPrice, q=q, limit=limit, after=after, before=before)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProductsApi->listProducts: %s\n" % e)</code></pre>
@@ -15194,12 +15233,13 @@ pub fn main() {
     let sort = sort_example; // String
     let minPrice = 8.14; // BigDecimal
     let maxPrice = 8.14; // BigDecimal
+    let q = q_example; // String
     let limit = 789; // Long
     let after = after_example; // String
     let before = before_example; // String
 
     let mut context = ProductsApi::Context::default();
-    let result = client.listProducts(category, sort, minPrice, maxPrice, limit, after, before, &context).wait();
+    let result = client.listProducts(category, sort, minPrice, maxPrice, q, limit, after, before, &context).wait();
     println!("{:?}", result);
 
 }
@@ -15289,6 +15329,23 @@ pub fn main() {
             <div class="primitive">
                 <span class="type">
                     BigDecimal
+                </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">q</td>
+<td>
+
+
+    <div id="d2e199_listProducts_q">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
                 </span>
 
             </div>
@@ -15487,7 +15544,7 @@ This is the cursor that points to the start of the page for prev page
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Products-listProductsAnalytics-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://delta-shop.github.io/end-point/products/analytics?start_period=&end_period=&time_aggregation=&limit=&after=&before="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://delta-shop.github.io/end-point/products/analytics?start_period=&end_period=&q=&time_aggregation=&limit=&after=&before="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Products-listProductsAnalytics-0-java">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
@@ -15510,12 +15567,13 @@ public class ProductsApiExample {
         ProductsApi apiInstance = new ProductsApi();
         date startPeriod = 2013-10-20; // date | 
         date endPeriod = 2013-10-20; // date | 
+        String q = q_example; // String | 
         String timeAggregation = timeAggregation_example; // String | 
         Long limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
         String after = after_example; // String | This is the cursor that points to the end of the page use for next page
         String before = before_example; // String | This is the cursor that points to the start of the page for prev page
         try {
-            inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before);
+            inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProductsApi#listProductsAnalytics");
@@ -15535,12 +15593,13 @@ public class ProductsApiExample {
         ProductsApi apiInstance = new ProductsApi();
         date startPeriod = 2013-10-20; // date | 
         date endPeriod = 2013-10-20; // date | 
+        String q = q_example; // String | 
         String timeAggregation = timeAggregation_example; // String | 
         Long limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
         String after = after_example; // String | This is the cursor that points to the end of the page use for next page
         String before = before_example; // String | This is the cursor that points to the start of the page for prev page
         try {
-            inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before);
+            inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ProductsApi#listProductsAnalytics");
@@ -15561,6 +15620,7 @@ public class ProductsApiExample {
 
 date *startPeriod = 2013-10-20; //  (optional) (default to null)
 date *endPeriod = 2013-10-20; //  (optional) (default to null)
+String *q = q_example; //  (optional) (default to null)
 String *timeAggregation = timeAggregation_example; //  (optional) (default to null)
 Long *limit = 789; // This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional) (default to 30)
 String *after = after_example; // This is the cursor that points to the end of the page use for next page (optional) (default to null)
@@ -15571,6 +15631,7 @@ ProductsApi *apiInstance = [[ProductsApi alloc] init];
 // products data of number being sold in period
 [apiInstance listProductsAnalyticsWith:startPeriod
     endPeriod:endPeriod
+    q:q
     timeAggregation:timeAggregation
     limit:limit
     after:after
@@ -15598,6 +15659,7 @@ var api = new DelatShop.ProductsApi()
 var opts = {
   'startPeriod': 2013-10-20, // {date} 
   'endPeriod': 2013-10-20, // {date} 
+  'q': q_example, // {String} 
   'timeAggregation': timeAggregation_example, // {String} 
   'limit': 789, // {Long} This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
   'after': after_example, // {String} This is the cursor that points to the end of the page use for next page
@@ -15638,6 +15700,7 @@ namespace Example
             var apiInstance = new ProductsApi();
             var startPeriod = 2013-10-20;  // date |  (optional)  (default to null)
             var endPeriod = 2013-10-20;  // date |  (optional)  (default to null)
+            var q = q_example;  // String |  (optional)  (default to null)
             var timeAggregation = timeAggregation_example;  // String |  (optional)  (default to null)
             var limit = 789;  // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional)  (default to 30)
             var after = after_example;  // String | This is the cursor that points to the end of the page use for next page (optional)  (default to null)
@@ -15646,7 +15709,7 @@ namespace Example
             try
             {
                 // products data of number being sold in period
-                inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before);
+                inline_response_200_1 result = apiInstance.listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -15669,13 +15732,14 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YO
 $api_instance = new OpenAPITools\Client\Api\ProductsApi();
 $startPeriod = 2013-10-20; // date | 
 $endPeriod = 2013-10-20; // date | 
+$q = q_example; // String | 
 $timeAggregation = timeAggregation_example; // String | 
 $limit = 789; // Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
 $after = after_example; // String | This is the cursor that points to the end of the page use for next page
 $before = before_example; // String | This is the cursor that points to the start of the page for prev page
 
 try {
-    $result = $api_instance->listProductsAnalytics($startPeriod, $endPeriod, $timeAggregation, $limit, $after, $before);
+    $result = $api_instance->listProductsAnalytics($startPeriod, $endPeriod, $q, $timeAggregation, $limit, $after, $before);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProductsApi->listProductsAnalytics: ', $e->getMessage(), PHP_EOL;
@@ -15694,13 +15758,14 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 my $api_instance = WWW::OPenAPIClient::ProductsApi->new();
 my $startPeriod = 2013-10-20; # date | 
 my $endPeriod = 2013-10-20; # date | 
+my $q = q_example; # String | 
 my $timeAggregation = timeAggregation_example; # String | 
 my $limit = 789; # Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering.
 my $after = after_example; # String | This is the cursor that points to the end of the page use for next page
 my $before = before_example; # String | This is the cursor that points to the start of the page for prev page
 
 eval { 
-    my $result = $api_instance->listProductsAnalytics(startPeriod => $startPeriod, endPeriod => $endPeriod, timeAggregation => $timeAggregation, limit => $limit, after => $after, before => $before);
+    my $result = $api_instance->listProductsAnalytics(startPeriod => $startPeriod, endPeriod => $endPeriod, q => $q, timeAggregation => $timeAggregation, limit => $limit, after => $after, before => $before);
     print Dumper($result);
 };
 if ($@) {
@@ -15722,6 +15787,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = openapi_client.ProductsApi()
 startPeriod = 2013-10-20 # date |  (optional) (default to null)
 endPeriod = 2013-10-20 # date |  (optional) (default to null)
+q = q_example # String |  (optional) (default to null)
 timeAggregation = timeAggregation_example # String |  (optional) (default to null)
 limit = 789 # Long | This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. (optional) (default to 30)
 after = after_example # String | This is the cursor that points to the end of the page use for next page (optional) (default to null)
@@ -15729,7 +15795,7 @@ before = before_example # String | This is the cursor that points to the start o
 
 try: 
     # products data of number being sold in period
-    api_response = api_instance.list_products_analytics(startPeriod=startPeriod, endPeriod=endPeriod, timeAggregation=timeAggregation, limit=limit, after=after, before=before)
+    api_response = api_instance.list_products_analytics(startPeriod=startPeriod, endPeriod=endPeriod, q=q, timeAggregation=timeAggregation, limit=limit, after=after, before=before)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ProductsApi->listProductsAnalytics: %s\n" % e)</code></pre>
@@ -15741,13 +15807,14 @@ except ApiException as e:
 pub fn main() {
     let startPeriod = 2013-10-20; // date
     let endPeriod = 2013-10-20; // date
+    let q = q_example; // String
     let timeAggregation = timeAggregation_example; // String
     let limit = 789; // Long
     let after = after_example; // String
     let before = before_example; // String
 
     let mut context = ProductsApi::Context::default();
-    let result = client.listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before, &context).wait();
+    let result = client.listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before, &context).wait();
     println!("{:?}", result);
 
 }
@@ -15810,6 +15877,23 @@ pub fn main() {
                     <span class="format">
                         (date)
                     </span>
+
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">q</td>
+<td>
+
+
+    <div id="d2e199_listProductsAnalytics_q">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
 
             </div>
         </div>
