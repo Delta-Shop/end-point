@@ -1015,6 +1015,7 @@ components:
         id:
           type: integer
           format: int64
+          readOnly: true
         name:
           type: string
         password:
@@ -1071,6 +1072,7 @@ components:
         id:
           type: integer
           format: int64
+          readOnly: true
         name:
           type: string
           maximum: 20
@@ -1091,6 +1093,7 @@ components:
       properties:
         id:
           type: integer
+          readOnly: true
         name:
           type: string
           example: apple
@@ -1151,6 +1154,7 @@ components:
         id:
           type: integer
           format: int64
+          readOnly: true
         items:
           type: array
           items:
