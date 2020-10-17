@@ -374,7 +374,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserClient'
         default:
           description: Unexpected error
     post:
@@ -388,22 +388,14 @@ paths:
         content:
             application/json:
               schema:
-                type: object
-                properties:
-                    mail:
-                      type: string
-                      description: mail-address for verfication
-                      example: your-mail@host.com
-                    password:
-                      type: string
-                      description: new password assoiated with mail              
+                $ref: '#/components/schemas/UserMain'
       responses:
         '200':
           description: user created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/User"
+                $ref: "#/components/schemas/UserClient"
         '400':
           description: mail already in use
         default:
@@ -430,7 +422,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserClient'
         "400":
           description: The specified user_id is invalid (not a number).
         "404":
@@ -451,14 +443,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UserClient'
       responses:
         '201':
           description: edited
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/UserClient'
         "400":
           description: The specified user_id is invalid (not a number).
         "404":
@@ -1008,9 +1000,8 @@ paths:
 
 components:
   schemas:
-
-    User:
-      description: customer or admin user 
+    UserMain:
+      description: main user information for admin and client
       properties:
         id:
           type: integer
@@ -1020,15 +1011,10 @@ components:
           type: string
         password:
           type: string
+          writeOnly: true
         profile_picture:
           type: string
           format: url
-        address:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
-        address_href:
-          type: string
         e_mail:
           type: string
           format: email
@@ -1037,16 +1023,34 @@ components:
           type: array
           items:
             type: string
-        verfied:
-          type: boolean
-          description: is mail verfied or not
-        cart:
-          $ref: '#/components/schemas/Cart'
-        cart_href:
-          type: string
       required:
-        - id
-        - name
+      - id
+      - name
+      - e_mail
+      - password
+      - verfied
+    UserClient:
+      description: customer or admin user 
+      allOf:
+        - $ref: '#/components/schemas/UserMain'
+        - type: object
+          properties:
+            address:
+              type: array
+              items:
+                $ref: '#/components/schemas/Address'
+            address_href:
+              type: string
+              readOnly: true
+            verfied:
+              type: boolean
+              description: is mail verfied or not
+              readOnly: true
+            cart:
+              $ref: '#/components/schemas/Cart'
+            cart_href:
+              type: string
+              readOnly: true
     Address:
       description: user detailed address
       properties:
