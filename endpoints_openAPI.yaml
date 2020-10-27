@@ -1084,6 +1084,7 @@ components:
         product_category_href:
           type: string
           example: /products?category=fruits
+          readOnly: true
       additionalProperties: false
   
     Product:
