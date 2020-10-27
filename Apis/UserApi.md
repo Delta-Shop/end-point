@@ -14,12 +14,12 @@ Method | HTTP request | Description
 [**deleteCartItemByUserIdAndProductId**](UserApi.md#deleteCartItemByUserIdAndProductId) | **DELETE** /users/{user_id}/cart/item/{product_id} | remove item from cart
 [**deleteSavedItemsByUserIdAndProductId**](UserApi.md#deleteSavedItemsByUserIdAndProductId) | **DELETE** /users/{user_id}/saved_items/{product_id} | remove item from SavedItems
 [**deleteUserById**](UserApi.md#deleteUserById) | **DELETE** /users/{user_id} | delet user account by id
-[**editItemCountByUserIdAndProductId**](UserApi.md#editItemCountByUserIdAndProductId) | **PATCH** /users/{user_id}/cart/item/{product_id} | edit cart item
 [**getUserById**](UserApi.md#getUserById) | **GET** /users/{user_id} | Returns a User by ID.
 [**listAddressByUserId**](UserApi.md#listAddressByUserId) | **GET** /users/{user_id}/address | Returns addresses by User ID.
 [**listCartByUserId**](UserApi.md#listCartByUserId) | **GET** /users/{user_id}/cart | Returns cart by User ID.
 [**listSavedItemsByUserId**](UserApi.md#listSavedItemsByUserId) | **GET** /users/{user_id}/saved_items | Returns SavedItems by User ID.
 [**replaceAddressByUserById**](UserApi.md#replaceAddressByUserById) | **PUT** /users/{user_id}/address/{address_id} | updating user address
+[**updateItemCountByUserIdAndProductId**](UserApi.md#updateItemCountByUserIdAndProductId) | **PATCH** /users/{user_id}/cart/item/{product_id} | edit cart item
 [**updateUserById**](UserApi.md#updateUserById) | **POST** /users/{user_id} | updating/create user
 
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 <a name="addUser"></a>
 # **addUser**
-> User addUser(inlineObject)
+> UserClient addUser(userMain)
 
 Add user new user with only mail
 
@@ -139,11 +139,11 @@ Add user new user with only mail
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject** | [**InlineObject**](../\Models/InlineObject.md)|  |
+ **userMain** | [**UserMain**](../\Models/UserMain.md)|  |
 
 ### Return type
 
-[**User**](../\Models/User.md)
+[**UserClient**](../\Models/UserClient.md)
 
 ### Authorization
 
@@ -282,36 +282,9 @@ null (empty response body)
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-<a name="editItemCountByUserIdAndProductId"></a>
-# **editItemCountByUserIdAndProductId**
-> Cart_item editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE)
-
-edit cart item
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **Integer**|  | [default to null]
- **productId** | **Integer**|  | [default to null]
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](../\Models/UNKNOWN_BASE_TYPE.md)|  | [optional]
-
-### Return type
-
-[**Cart_item**](../\Models/Cart_item.md)
-
-### Authorization
-
-[accessCode](../README.md#accessCode)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
 <a name="getUserById"></a>
 # **getUserById**
-> User getUserById(userId)
+> UserClient getUserById(userId)
 
 Returns a User by ID.
 
@@ -323,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](../\Models/User.md)
+[**UserClient**](../\Models/UserClient.md)
 
 ### Authorization
 
@@ -436,9 +409,36 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+<a name="updateItemCountByUserIdAndProductId"></a>
+# **updateItemCountByUserIdAndProductId**
+> Cart_item updateItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE)
+
+edit cart item
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **Integer**|  | [default to null]
+ **productId** | **Integer**|  | [default to null]
+ **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](../\Models/UNKNOWN_BASE_TYPE.md)|  | [optional]
+
+### Return type
+
+[**Cart_item**](../\Models/Cart_item.md)
+
+### Authorization
+
+[accessCode](../README.md#accessCode)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 <a name="updateUserById"></a>
 # **updateUserById**
-> User updateUserById(userId, user)
+> UserClient updateUserById(userId, userClient)
 
 updating/create user
 
@@ -447,11 +447,11 @@ updating/create user
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Integer**|  | [default to null]
- **user** | [**User**](../\Models/User.md)|  |
+ **userClient** | [**UserClient**](../\Models/UserClient.md)|  |
 
 ### Return type
 
-[**User**](../\Models/User.md)
+[**UserClient**](../\Models/UserClient.md)
 
 ### Authorization
 

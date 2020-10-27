@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**getCategoryByName**](CatagoriesApi.md#getCategoryByName) | **GET** /catagories/{category_name} | Returns a Category by its name.
 [**listCatagories**](CatagoriesApi.md#listCatagories) | **GET** /catagories | getting all Catagories.
 [**listProductsByCategory**](CatagoriesApi.md#listProductsByCategory) | **GET** /catagries/{category_name}/products | Returns a products by category Name.
-[**updateCategoryByName**](CatagoriesApi.md#updateCategoryByName) | **POST** /catagories/{category_name} | renaming Category
+[**replaceCategoryByName**](CatagoriesApi.md#replaceCategoryByName) | **PUT** /catagories/{category_name} | renaming Category
 
 
 <a name="addCatagories"></a>
@@ -134,9 +134,9 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
-<a name="updateCategoryByName"></a>
-# **updateCategoryByName**
-> Category updateCategoryByName(categoryName, category)
+<a name="replaceCategoryByName"></a>
+# **replaceCategoryByName**
+> Category replaceCategoryByName(categoryName, category)
 
 renaming Category
 

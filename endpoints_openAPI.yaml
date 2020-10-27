@@ -186,8 +186,8 @@ paths:
         default:
           description: Unexpected error
 
-    put:
-      operationId: replaceProductById
+    patch:
+      operationId: updateProductById
       security:
         - accessCode: [admin]
 
@@ -291,8 +291,8 @@ paths:
         default:
           description: Unexpected error
 
-    post:
-      operationId: updateCategoryByName
+    put:
+      operationId: replaceCategoryByName
       security:
         - accessCode: [admin]
 
@@ -725,7 +725,7 @@ paths:
         default:
           description: Unexpected error
     patch:
-      operationId: editItemCountByUserIdAndProductId
+      operationId: updateItemCountByUserIdAndProductId
       security:
         - accessCode: [admin ,client]
       tags:

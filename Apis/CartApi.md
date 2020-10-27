@@ -9,9 +9,9 @@ Method | HTTP request | Description
 [**checkoutCart**](CartApi.md#checkoutCart) | **POST** /users/{user_id}/checkout | checkout user cart
 [**deleteCartItemByUserIdAndProductId**](CartApi.md#deleteCartItemByUserIdAndProductId) | **DELETE** /users/{user_id}/cart/item/{product_id} | remove item from cart
 [**deletePendingItemsByUserId**](CartApi.md#deletePendingItemsByUserId) | **DELETE** /users/{user_id}/pending_items/{cart_id} | remove item from pending as mean to cancel order
-[**editItemCountByUserIdAndProductId**](CartApi.md#editItemCountByUserIdAndProductId) | **PATCH** /users/{user_id}/cart/item/{product_id} | edit cart item
 [**listCartByUserId**](CartApi.md#listCartByUserId) | **GET** /users/{user_id}/cart | Returns cart by User ID.
 [**listPendingItemsByUserId**](CartApi.md#listPendingItemsByUserId) | **GET** /users/{user_id}/pending_items | list pending items for user
+[**updateItemCountByUserIdAndProductId**](CartApi.md#updateItemCountByUserIdAndProductId) | **PATCH** /users/{user_id}/cart/item/{product_id} | edit cart item
 
 
 <a name="addCartByUserId"></a>
@@ -143,33 +143,6 @@ null (empty response body)
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-<a name="editItemCountByUserIdAndProductId"></a>
-# **editItemCountByUserIdAndProductId**
-> Cart_item editItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE)
-
-edit cart item
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **Integer**|  | [default to null]
- **productId** | **Integer**|  | [default to null]
- **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](../\Models/UNKNOWN_BASE_TYPE.md)|  | [optional]
-
-### Return type
-
-[**Cart_item**](../\Models/Cart_item.md)
-
-### Authorization
-
-[accessCode](../README.md#accessCode)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
 <a name="listCartByUserId"></a>
 # **listCartByUserId**
 > Cart listCartByUserId(userId)
@@ -218,5 +191,32 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="updateItemCountByUserIdAndProductId"></a>
+# **updateItemCountByUserIdAndProductId**
+> Cart_item updateItemCountByUserIdAndProductId(userId, productId, uNKNOWNBASETYPE)
+
+edit cart item
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **userId** | **Integer**|  | [default to null]
+ **productId** | **Integer**|  | [default to null]
+ **uNKNOWNBASETYPE** | [**UNKNOWN_BASE_TYPE**](../\Models/UNKNOWN_BASE_TYPE.md)|  | [optional]
+
+### Return type
+
+[**Cart_item**](../\Models/Cart_item.md)
+
+### Authorization
+
+[accessCode](../README.md#accessCode)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
