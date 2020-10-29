@@ -15,11 +15,32 @@ security:
 
 paths:
   /images:
+    post:
+      summary: upload image for product or user
+      operationId: uploadImage
+      x-codegen-request-body-name: images_link
+      requestBody:
+        content:
+          image/*: #* represent the image datatype
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: link for uplaoded image
+          content:
+            application/json:
+              schema:
+                type: string
+                format: url
+
+
+  /images/{image_id}:
     get:
       summary: return image by it's id
-      operationId: listImage
+      operationId: getImageById
       parameters:
-        - in: query
+        - in: path
           name : image_id
           required: true
           schema:
@@ -43,24 +64,6 @@ paths:
         default:
           description: Unexpected error
 
-    post:
-      summary: upload image for product or user
-      operationId: uploadImage
-      x-codegen-request-body-name: images_link
-      requestBody:
-        content:
-          image/*: #* represent the image datatype
-            schema:
-              type: string
-              format: binary
-      responses:
-        '200':
-          description: link for uplaoded image
-          content:
-            application/json:
-              schema:
-                type: string
-                format: url
   /products:
     get:
       operationId: listProducts
