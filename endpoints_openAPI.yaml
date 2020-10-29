@@ -1117,7 +1117,9 @@ components:
         summary_disc:
           type: string
         category:
-          $ref: '#/components/schemas/Category'
+          type: array
+          items:  
+            $ref: '#/components/schemas/Category'
         available_stock:
           type: integer
         number_purches:
