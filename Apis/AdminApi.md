@@ -68,7 +68,7 @@ null (empty response body)
 
 <a name="getUserById"></a>
 # **getUserById**
-> User getUserById(userId)
+> UserClient getUserById(userId)
 
 Returns a User by ID.
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](../\Models/User.md)
+[**UserClient**](../\Models/UserClient.md)
 
 ### Authorization
 
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 <a name="listProductsAnalytics"></a>
 # **listProductsAnalytics**
-> inline_response_200_1 listProductsAnalytics(startPeriod, endPeriod, timeAggregation, limit, after, before)
+> inline_response_200_1 listProductsAnalytics(startPeriod, endPeriod, q, timeAggregation, limit, after, before)
 
 products data of number being sold in period
 
@@ -187,6 +187,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **startPeriod** | **date**|  | [optional] [default to null]
  **endPeriod** | **date**|  | [optional] [default to null]
+ **q** | **String**|  | [optional] [default to null]
  **timeAggregation** | **String**|  | [optional] [default to null] [enum: year, month, day]
  **limit** | **Long**| This is the maximum number of objects that may be returned. A query may return fewer than the value of limit due to filtering. | [optional] [default to 30]
  **after** | **String**| This is the cursor that points to the end of the page use for next page | [optional] [default to null]
@@ -207,7 +208,7 @@ Name | Type | Description  | Notes
 
 <a name="listUsers"></a>
 # **listUsers**
-> User listUsers()
+> UserClient listUsers()
 
 Returns all regesterd users.
 
@@ -216,7 +217,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**User**](../\Models/User.md)
+[**UserClient**](../\Models/UserClient.md)
 
 ### Authorization
 
@@ -229,7 +230,7 @@ This endpoint does not need any parameter.
 
 <a name="updateUserById"></a>
 # **updateUserById**
-> User updateUserById(userId, user)
+> UserClient updateUserById(userId, userClient)
 
 updating/create user
 
@@ -238,11 +239,11 @@ updating/create user
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **Integer**|  | [default to null]
- **user** | [**User**](../\Models/User.md)|  |
+ **userClient** | [**UserClient**](../\Models/UserClient.md)|  |
 
 ### Return type
 
-[**User**](../\Models/User.md)
+[**UserClient**](../\Models/UserClient.md)
 
 ### Authorization
 
