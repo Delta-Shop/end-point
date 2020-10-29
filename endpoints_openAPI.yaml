@@ -1063,6 +1063,8 @@ components:
         city:
           type: string
           example: cairo
+        state:
+          type: string
         street_address:
           type: string
           description: detailed address including street and landmarks
