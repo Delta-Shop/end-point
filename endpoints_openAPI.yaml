@@ -1120,6 +1120,8 @@ components:
           $ref: '#/components/schemas/Category'
         available_stock:
           type: integer
+        number_purches:
+          type: integer
       additionalProperties: false
     
     # to post a product with images NOTE this may be slow 
