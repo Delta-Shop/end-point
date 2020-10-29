@@ -1288,8 +1288,8 @@ ul.nav-tabs {
                       <a href="#api-Catagories-replaceCategoryByName">replaceCategoryByName</a>
                     </li>
                   <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
-                    <li data-group="Default" data-name="listImage" class="">
-                      <a href="#api-Default-listImage">listImage</a>
+                    <li data-group="Default" data-name="getImageById" class="">
+                      <a href="#api-Default-getImageById">getImageById</a>
                     </li>
                     <li data-group="Default" data-name="uploadImage" class="">
                       <a href="#api-Default-uploadImage">uploadImage</a>
@@ -12988,10 +12988,10 @@ $(document).ready(function() {
                   </section>
                 <section id="api-Default">
                   <h1>Default</h1>
-                    <div id="api-Default-listImage">
-                      <article id="api-Default-listImage-0" data-group="User" data-name="listImage" data-version="0">
+                    <div id="api-Default-getImageById">
+                      <article id="api-Default-getImageById-0" data-group="User" data-name="getImageById" data-version="0">
                         <div class="pull-left">
-                          <h1>listImage</h1>
+                          <h1>getImageById</h1>
                           <p>return image by it&#39;s id</p>
                         </div>
                         <div class="pull-right"></div>
@@ -13000,30 +13000,30 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/images</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/images/{image_id}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-listImage-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-listImage-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-listImage-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-listImage-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-listImage-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-listImage-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-listImage-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-listImage-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-listImage-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-listImage-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-listImage-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Default-listImage-0-rust">Rust</a></li>
+                          <li class="active"><a href="#examples-Default-getImageById-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-getImageById-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-getImageById-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-getImageById-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-getImageById-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-getImageById-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-getImageById-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-getImageById-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-getImageById-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-getImageById-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-getImageById-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Default-getImageById-0-rust">Rust</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-listImage-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://delta-shop.github.io/end-point/images?image_id="</code></pre>
+                          <div class="tab-pane active" id="examples-Default-getImageById-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://delta-shop.github.io/end-point/images/{image_id}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-listImage-0-java">
+                          <div class="tab-pane" id="examples-Default-getImageById-0-java">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
 import org.openapitools.client.auth.*;
 import org.openapitools.client.model.*;
@@ -13044,10 +13044,10 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         String imageId = imageId_example; // String | 
         try {
-            File result = apiInstance.listImage(imageId);
+            File result = apiInstance.getImageById(imageId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#listImage");
+            System.err.println("Exception when calling DefaultApi#getImageById");
             e.printStackTrace();
         }
     }
@@ -13055,7 +13055,7 @@ public class DefaultApiExample {
 </code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-listImage-0-android">
+                          <div class="tab-pane" id="examples-Default-getImageById-0-android">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.DefaultApi;
 
 public class DefaultApiExample {
@@ -13064,20 +13064,20 @@ public class DefaultApiExample {
         DefaultApi apiInstance = new DefaultApi();
         String imageId = imageId_example; // String | 
         try {
-            File result = apiInstance.listImage(imageId);
+            File result = apiInstance.getImageById(imageId);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#listImage");
+            System.err.println("Exception when calling DefaultApi#getImageById");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-listImage-0-groovy">
+  <div class="tab-pane" id="examples-Default-getImageById-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-listImage-0-objc">
+                            <div class="tab-pane" id="examples-Default-getImageById-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure OAuth2 access token for authorization: (authentication scheme: accessCode)
@@ -13088,7 +13088,7 @@ String *imageId = imageId_example; //  (default to null)
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // return image by it's id
-[apiInstance listImageWith:imageId
+[apiInstance getImageByIdWith:imageId
               completionHandler: ^(File output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -13100,7 +13100,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-listImage-0-javascript">
+                            <div class="tab-pane" id="examples-Default-getImageById-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var DelatShop = require('delat_shop');
 var defaultClient = DelatShop.ApiClient.instance;
 
@@ -13118,14 +13118,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.listImage(imageId, callback);
+api.getImageById(imageId, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-listImage-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-getImageById-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-listImage-0-csharp">
+                            <div class="tab-pane" id="examples-Default-getImageById-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using Org.OpenAPITools.Api;
@@ -13134,7 +13134,7 @@ using Org.OpenAPITools.Model;
 
 namespace Example
 {
-    public class listImageExample
+    public class getImageByIdExample
     {
         public void main()
         {
@@ -13148,12 +13148,12 @@ namespace Example
             try
             {
                 // return image by it's id
-                File result = apiInstance.listImage(imageId);
+                File result = apiInstance.getImageById(imageId);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.listImage: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.getImageById: " + e.Message );
             }
         }
     }
@@ -13161,7 +13161,7 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-listImage-0-php">
+                            <div class="tab-pane" id="examples-Default-getImageById-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -13172,15 +13172,15 @@ $api_instance = new OpenAPITools\Client\Api\DefaultApi();
 $imageId = imageId_example; // String | 
 
 try {
-    $result = $api_instance->listImage($imageId);
+    $result = $api_instance->getImageById($imageId);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->listImage: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->getImageById: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-listImage-0-perl">
+                            <div class="tab-pane" id="examples-Default-getImageById-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::DefaultApi;
@@ -13192,15 +13192,15 @@ my $api_instance = WWW::OPenAPIClient::DefaultApi->new();
 my $imageId = imageId_example; # String | 
 
 eval { 
-    my $result = $api_instance->listImage(imageId => $imageId);
+    my $result = $api_instance->getImageById(imageId => $imageId);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->listImage: $@\n";
+    warn "Exception when calling DefaultApi->getImageById: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-listImage-0-python">
+                            <div class="tab-pane" id="examples-Default-getImageById-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import openapi_client
@@ -13216,20 +13216,20 @@ imageId = imageId_example # String |  (default to null)
 
 try: 
     # return image by it's id
-    api_response = api_instance.list_image(imageId)
+    api_response = api_instance.get_image_by_id(imageId)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->listImage: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->getImageById: %s\n" % e)</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-listImage-0-rust">
+                            <div class="tab-pane" id="examples-Default-getImageById-0-rust">
                               <pre class="prettyprint"><code class="language-rust">extern crate DefaultApi;
 
 pub fn main() {
     let imageId = imageId_example; // String
 
     let mut context = DefaultApi::Context::default();
-    let result = client.listImage(imageId, &context).wait();
+    let result = client.getImageById(imageId, &context).wait();
     println!("{:?}", result);
 
 }
@@ -13249,21 +13249,17 @@ pub fn main() {
 
                           <h2>Parameters</h2>
 
-
-
-
-
-                            <div class="methodsubtabletitle">Query parameters</div>
+                            <div class="methodsubtabletitle">Path parameters</div>
                             <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">image_id*</td>
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">image_id*</td>
 <td>
 
 
-    <div id="d2e199_listImage_imageId">
+    <div id="d2e199_getImageById_imageId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -13281,24 +13277,28 @@ pub fn main() {
 
                             </table>
 
+
+
+
+
                           <h2>Responses</h2>
-                            <h3 id="examples-Default-listImage-title-200"></h3>
-                            <p id="examples-Default-listImage-description-200" class="marked"></p>
+                            <h3 id="examples-Default-getImageById-title-200"></h3>
+                            <p id="examples-Default-getImageById-description-200" class="marked"></p>
                             <script>
                               var responseDefault200_description = `OK`;
                               var responseDefault200_description_break = responseDefault200_description.indexOf('\n');
                               if (responseDefault200_description_break == -1) {
-                                $("#examples-Default-listImage-title-200").text("Status: 200 - " + responseDefault200_description);
+                                $("#examples-Default-getImageById-title-200").text("Status: 200 - " + responseDefault200_description);
                               } else {
-                                $("#examples-Default-listImage-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
-                                $("#examples-Default-listImage-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
+                                $("#examples-Default-getImageById-title-200").text("Status: 200 - " + responseDefault200_description.substring(0, responseDefault200_description_break));
+                                $("#examples-Default-getImageById-description-200").html(responseDefault200_description.substring(responseDefault200_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-Default-listImage-200" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-Default-getImageById-200" class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-listImage-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-Default-getImageById-200-schema">Schema</a>
                                 </li>
 
 
@@ -13307,9 +13307,9 @@ pub fn main() {
                             </ul>
 
 
-                            <div class="tab-content" id="responses-Default-listImage-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-Default-listImage-200-schema">
-                                  <div id="responses-Default-listImage-schema-200" class="exampleStyle">
+                            <div class="tab-content" id="responses-Default-getImageById-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Default-getImageById-200-schema">
+                                  <div id="responses-Default-getImageById-schema-200" class="exampleStyle">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -13339,33 +13339,33 @@ pub fn main() {
                                         }
 
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-Default-listImage-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-Default-listImage-schema-200');
+                                        $('#responses-Default-getImageById-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Default-getImageById-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-Default-listImage-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-Default-getImageById-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-Default-listImage-title-404"></h3>
-                            <p id="examples-Default-listImage-description-404" class="marked"></p>
+                            <h3 id="examples-Default-getImageById-title-404"></h3>
+                            <p id="examples-Default-getImageById-description-404" class="marked"></p>
                             <script>
                               var responseDefault404_description = `image not found`;
                               var responseDefault404_description_break = responseDefault404_description.indexOf('\n');
                               if (responseDefault404_description_break == -1) {
-                                $("#examples-Default-listImage-title-404").text("Status: 404 - " + responseDefault404_description);
+                                $("#examples-Default-getImageById-title-404").text("Status: 404 - " + responseDefault404_description);
                               } else {
-                                $("#examples-Default-listImage-title-404").text("Status: 404 - " + responseDefault404_description.substring(0, responseDefault404_description_break));
-                                $("#examples-Default-listImage-description-404").html(responseDefault404_description.substring(responseDefault404_description_break));
+                                $("#examples-Default-getImageById-title-404").text("Status: 404 - " + responseDefault404_description.substring(0, responseDefault404_description_break));
+                                $("#examples-Default-getImageById-description-404").html(responseDefault404_description.substring(responseDefault404_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-Default-listImage-404" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-Default-getImageById-404" class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-Default-listImage-404-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-Default-getImageById-404-schema">Schema</a>
                                 </li>
 
 
@@ -13374,9 +13374,9 @@ pub fn main() {
                             </ul>
 
 
-                            <div class="tab-content" id="responses-Default-listImage-404-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-Default-listImage-404-schema">
-                                  <div id="responses-Default-listImage-schema-404" class="exampleStyle">
+                            <div class="tab-content" id="responses-Default-getImageById-404-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Default-getImageById-404-schema">
+                                  <div id="responses-Default-getImageById-schema-404" class="exampleStyle">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -13407,37 +13407,37 @@ pub fn main() {
                                         }
 
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-Default-listImage-404-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-Default-listImage-schema-404');
+                                        $('#responses-Default-getImageById-404-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Default-getImageById-schema-404');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-Default-listImage-404-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-Default-getImageById-404-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-Default-listImage-title-default"></h3>
-                            <p id="examples-Default-listImage-description-default" class="marked"></p>
+                            <h3 id="examples-Default-getImageById-title-default"></h3>
+                            <p id="examples-Default-getImageById-description-default" class="marked"></p>
                             <script>
                               var responseDefaultdefault_description = `Unexpected error`;
                               var responseDefaultdefault_description_break = responseDefaultdefault_description.indexOf('\n');
                               if (responseDefaultdefault_description_break == -1) {
-                                $("#examples-Default-listImage-title-default").text("Status: default - " + responseDefaultdefault_description);
+                                $("#examples-Default-getImageById-title-default").text("Status: default - " + responseDefaultdefault_description);
                               } else {
-                                $("#examples-Default-listImage-title-default").text("Status: default - " + responseDefaultdefault_description.substring(0, responseDefaultdefault_description_break));
-                                $("#examples-Default-listImage-description-default").html(responseDefaultdefault_description.substring(responseDefaultdefault_description_break));
+                                $("#examples-Default-getImageById-title-default").text("Status: default - " + responseDefaultdefault_description.substring(0, responseDefaultdefault_description_break));
+                                $("#examples-Default-getImageById-description-default").html(responseDefaultdefault_description.substring(responseDefaultdefault_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-Default-listImage-default" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-Default-getImageById-default" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-Default-listImage-default-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-Default-getImageById-default-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>

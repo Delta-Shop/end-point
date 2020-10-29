@@ -34,7 +34,7 @@ Class | Method | HTTP request | Description
 *CatagoriesApi* | [**listCatagories**](Apis/CatagoriesApi.md#listcatagories) | **GET** /catagories | getting all Catagories.
 *CatagoriesApi* | [**listProductsByCategory**](Apis/CatagoriesApi.md#listproductsbycategory) | **GET** /catagries/{category_name}/products | Returns a products by category Name.
 *CatagoriesApi* | [**replaceCategoryByName**](Apis/CatagoriesApi.md#replacecategorybyname) | **PUT** /catagories/{category_name} | renaming Category
-*DefaultApi* | [**listImage**](Apis/DefaultApi.md#listimage) | **GET** /images | return image by it's id
+*DefaultApi* | [**getImageById**](Apis/DefaultApi.md#getimagebyid) | **GET** /images/{image_id} | return image by it's id
 *DefaultApi* | [**uploadImage**](Apis/DefaultApi.md#uploadimage) | **POST** /images | upload image for product or user
 *ProductsApi* | [**addProduct**](Apis/ProductsApi.md#addproduct) | **POST** /products | Creates a new product.
 *ProductsApi* | [**deleteProductById**](Apis/ProductsApi.md#deleteproductbyid) | **DELETE** /products/{product_id} | updating product
